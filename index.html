@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Creaciones Web 13:20</title>
   <meta name="description" content="Diseño web esencial para artesanos, emprendedores y creadores. Sitios claros, honestos y centrados en tu trabajo.">
-  
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
 
   <style>
@@ -15,23 +15,47 @@
       padding: 0;
     }
 
+    /* --- Fondo texturizado con movimiento sutil --- */
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      background: #faf8f6; /* Fondo crema cálido */
+      background: #faf8f6; /* Color base */
       color: #333;
       line-height: 1.65;
       padding: 1.8rem 1rem;
       font-weight: 500;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Textura de fondo (imagen de tela o papel) */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/7ZzQY4P.png') repeat; /* Textura de tela suave */
+      opacity: 0.15;
+      z-index: -1;
+      animation: subtleMove 20s linear infinite;
+    }
+
+    @keyframes subtleMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
     }
 
     .container {
       max-width: 800px;
       margin: 0 auto;
-      background: #fff;
-      border-radius: 18px; /* Bordes más suaves */
+      background: rgba(255, 255, 255, 0.95); /* Tarjeta semitransparente */
+      border-radius: 18px;
       padding: 2.6rem;
       box-shadow: 0 6px 20px rgba(0,0,0,0.04);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .container:hover {
@@ -63,7 +87,7 @@
 
     .btn {
       display: inline-block;
-      background: #8B5A3C; /* Marrón artesanal */
+      background: #8B5A3C;
       color: white;
       text-decoration: none;
       padding: 0.85rem 1.7rem;
@@ -76,7 +100,7 @@
     }
 
     .btn:hover {
-      background: #724930; /* Más oscuro al pasar */
+      background: #724930;
       transform: translateY(-1px);
     }
 
@@ -140,9 +164,9 @@
 
     <p>
       <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20Creaciones%20Web%2013%3A20%20y%20me%20interesa%20una%20p%C3%A1gina%20web." 
-       class="btn" 
-       target="_blank">
-      ✉️ Consultar por WhatsApp
+         class="btn" 
+         target="_blank">
+        ✉️ Consultar por WhatsApp
       </a>
     </p>
 
@@ -157,4 +181,5 @@
     </footer>
   </div>
 </body>
+</html>
 </html>
