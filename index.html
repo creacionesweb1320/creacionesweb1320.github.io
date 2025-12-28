@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Creaciones Web 13:20 – Diseño Web Artesanal</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="description" content="Diseño web esencial para artesanos, emprendedores y creadores. Sitios claros, honestos y centrados en tu trabajo.">
+  <meta property="og:title" content="Creaciones Web 13:20">
+  <meta property="og:description" content="Diseño web artesanal para emprendedores. Sitios elegantes, funcionales y con identidad propia.">
+  <meta property="og:image" content="https://creacionesweb1320.github.io/img/preview.jpg">
+  <meta property="og:url" content="https://creacionesweb1320.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #1b1410;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .fondo-loop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .fondo-loop video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      opacity: 0.75;
+    }
+    .descripcion {
+      text-align: center;
+      padding: 50px 30px 30px;
+      max-width: 750px;
+      margin: 0 auto 30px;
+      background: rgba(20, 15, 12, 0.85);
+      backdrop-filter: blur(2px);
+      border: 1px solid #3a2e25;
+      border-radius: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .descripcion h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4em;
+      color: #f5e6cc;
+      margin: 15px 0;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+    }
+    .descripcion p {
+      font-size: 1.1em;
+      color: #d4c5a8;
+      margin: 20px auto;
+      font-weight: 400;
+    }
+    .highlight {
+      background: rgba(50, 40, 30, 0.4);
+      border-left: 3px solid #d4af37;
+      padding: 12px 16px;
+      margin: 20px 0;
+      font-style: italic;
+      color: #c8b89f;
+      text-align: center;
+      border-radius: 0 8px 8px 0;
+    }
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      padding: 30px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .producto {
+      width: 100%;
+      max-width: 260px;
+      background: rgba(31, 24, 19, 0.88);
+      backdrop-filter: blur(2px);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      border: 1px solid #3a2e25;
+    }
+    .producto:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0,0,0,.5), 0 0 22px rgba(212,175,55,.3), inset 0 0 18px rgba(212,175,55,.2);
+    }
+    .producto img {
+      width: 100%;
+      height: 160px;
+      object-fit: contain;
+      object-position: center;
+      background: #1f1813;
+      border-bottom: 1px solid #3a2e25;
+    }
+    .producto .info {
+      padding: 14px;
+    }
+    .producto h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #f5e6cc;
+      margin: 0 0 8px;
+      font-size: 1.2em;
+    }
+    .producto p {
+      color: #c8b89f;
+      font-size: 0.92em;
+      margin: 4px 0;
+    }
+    .contacto {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(23, 17, 13, 0.85);
+      backdrop-filter: blur(2px);
+      margin-top: 30px;
+      border-top: 1px solid #3a2e25;
+      position: relative;
+      z-index: 1;
+    }
+    .contacto h2 {
+      color: #f5e6cc;
+      margin-bottom: 15px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8em;
+    }
+    .contacto p {
+      color: #d4c5a8;
+      max-width: 600px;
+      margin: 0 auto 25px;
+    }
+    @keyframes pulsoSuave {
+      0%, 100% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.25); }
+      50% { box-shadow: 0 0 18px rgba(37, 211, 102, 0.6), 0 0 32px rgba(37, 211, 102, 0.35); }
+    }
+    .btn-whatsapp {
+      display: inline-block;
+      background: #25D366;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 24px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      animation: pulsoSuave 4s ease-in-out infinite;
+      transition: background 0.3s, transform 0.2s;
+      margin: 0 8px 12px;
+    }
+    .btn-form {
+      display: inline-block;
+      background: transparent;
+      color: #f5e6cc;
+      padding: 10px 24px;
+      border: 1px solid #d4c5a8;
+      border-radius: 20px;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s ease;
+      margin: 0 8px 12px;
+    }
+    .btn-whatsapp:hover {
+      background: #128C7E;
+      transform: scale(1.04);
+      animation-play-state: paused;
+    }
+    .btn-form:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: #f5e6cc;
+      color: #fff;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 500px;
+      margin: 25px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #3a2e25;
+    }
+    label {
+      color: #d4c5a8;
+      font-size: 0.95em;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      background: rgba(20, 15, 12, 0.7);
+      border: 1px solid #3a2e25;
+      border-radius: 8px;
+      color: #f5e6cc;
+      font-family: 'Montserrat', sans-serif;
+    }
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .btn-submit {
+      background: #8B5A3C;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .btn-submit:hover {
+      background: #724930;
+    }
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 0.92em;
+      color: #b8a580;
+      border-top: 1px solid #3a2e25;
+      margin-top: 20px;
+      background: rgba(20, 15, 12, 0.85);
+      backdrop-filter: blur(2px);
+      position: relative;
+      z-index: 1;
+    }
+    footer a {
+      color: #25D366;
+      text-decoration: none;
+    }
+    @media (max-width: 600px) {
+      .descripcion {
+        padding: 30px 15px;
+      }
+      .producto {
+        max-width: 95%;
+      }
+      .btn-whatsapp, .btn-form {
+        display: block;
+        margin: 10px auto;
+        width: fit-content;
+        min-width: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="fondo-loop">
+    <video autoplay muted loop playsinline>
+      <source src="img/textura.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="descripcion">
+    <h1>Creaciones Web 13:20</h1>
+    <p>Soy Raul, diseñador web independiente y artesano textil.<br>
+       Combino el cuidado del oficio manual con la claridad del diseño digital.</p>
+    <div class="highlight">
+      Trabajo desde lo esencial, sin promesas vacías.
+    </div>
+    <p>Creo sitios web rápidos, claros y centrados en tu trabajo:<br>
+       para costureras, ceramistas, músicos, emprendedores y creadores.</p>
+  </div>
+
+  <div class="galeria">
+    <div class="producto">
+      <img src="img/brconfecciones.jpg" alt="BR Confecciones">
+      <div class="info">
+        <h3>BR Confecciones</h3>
+        <p>Sitio real: tienda de confección artesanal con galería y WhatsApp integrado.</p>
+      </div>
+    </div>
+    <div class="producto">
+      <img src="img/flashbackradio.jpg" alt="FlashBack Radio">
+      <div class="info">
+        <h3>FlashBack Radio</h3>
+        <p>Sitio real: radio en vivo con diseño dinámico y fondo en movimiento.</p>
+      </div>
+    </div>
+    <div class="producto">
+      <img src="img/atelierclara.jpg" alt="Atelier Clara">
+      <div class="info">
+        <h3>Atelier Clara</h3>
+        <p>Ejemplo: portfolio para diseñadora de moda con galería interactiva.</p>
+      </div>
+    </div>
+    <div class="producto">
+      <img src="img/ceramica.jpg" alt="Cerámica Tierra Viva">
+      <div class="info">
+        <h3>Cerámica Tierra Viva</h3>
+        <p>Ejemplo: tienda artesanal con catálogo y formulario de pedidos.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contacto">
+    <h2>¿Te gustaría una web como estas para tu emprendimiento?</h2>
+    <p>Envíame un mensaje y conversamos sin compromiso. ¡Diseño sitios que reflejan tu esencia!</p>
+    
+    <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20Creaciones%20Web%2013%3A20%20y%20me%20interesa%20una%20p%C3%A1gina%20web." class="btn-whatsapp" target="_blank">
+      ✉️ Consultar por WhatsApp
+    </a>
+    <a href="#formulario" class="btn-form">
+      📝 Formulario de contacto
+    </a>
+
+    <form id="formulario" name="contacto" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contacto" />
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" required />
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" required />
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" required></textarea>
+      <button type="submit" class="btn-submit">Enviar consulta</button>
+    </form>
+  </div>
+
+  <footer>
+    Creaciones Web 13:20 &copy; 2025<br>
+    Diseño web desde el corazón, para quienes crean con las manos y el alma.<br>
+    <a href="https://wa.me/5493548584454" style="color:#25D366;">¿Necesitás una web como estas?</a>
+  </footer>
+</body>
+</html>
