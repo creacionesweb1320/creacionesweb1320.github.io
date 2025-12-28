@@ -6,7 +6,7 @@
   <title>Creaciones Web 13:20</title>
   <meta name="description" content="Diseño web esencial para artesanos, emprendedores y creadores. Sitios claros, honestos y centrados en tu trabajo.">
 
-  <!-- Favicon personalizado -->
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -120,7 +120,6 @@
       box-shadow: 0 4px 12px rgba(139, 90, 60, 0.2);
     }
 
-    /* === Galería de proyectos === */
     .galeria {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -162,7 +161,6 @@
       margin: 0;
     }
 
-    /* === Formulario === */
     form {
       margin-top: 2rem;
       padding-top: 2rem;
@@ -224,7 +222,6 @@
   </style>
 </head>
 <body>
-  <!-- Video de fondo -->
   <video autoplay muted loop class="bg-video">
     <source src="img/textura.mp4" type="video/mp4">
     Tu navegador no soporta videos.
@@ -274,9 +271,7 @@
     <h2>¿Te gustaría una web como estas para tu emprendimiento?</h2>
 
     <p>
-      <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20Creaciones%20Web%2013%3A20%20y%20me%20interesa%20una%20p%C3%A1gina%20web." 
-         class="btn" 
-         target="_blank">
+      <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20Creaciones%20Web%2013%3A20%20y%20me%20interesa%20una%20p%C3%A1gina%20web." class="btn" target="_blank">
         ✉️ Consultar por WhatsApp
       </a>
     </p>
@@ -287,19 +282,15 @@
       </a>
     </p>
 
-    <!-- Formulario de contacto -->
     <section id="contacto">
       <form name="contacto" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="contacto" />
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required />
-
         <label for="email">Correo electrónico</label>
         <input type="email" id="email" name="email" required />
-
         <label for="mensaje">Mensaje</label>
         <textarea id="mensaje" name="mensaje" required></textarea>
-
         <button type="submit" class="btn">Enviar consulta</button>
       </form>
     </section>
@@ -310,4 +301,3 @@
   </div>
 </body>
 </html>
-
