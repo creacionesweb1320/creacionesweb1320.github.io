@@ -132,7 +132,7 @@
     }
     .contacto {
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px 40px;
       background: rgba(23, 17, 13, 0.85);
       backdrop-filter: blur(2px);
       margin-top: 30px;
@@ -142,14 +142,16 @@
     }
     .contacto h2 {
       color: #f5e6cc;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.8em;
     }
-    .contacto p {
+    .contacto p.intro {
       color: #d4c5a8;
       max-width: 600px;
       margin: 0 auto 25px;
+      font-size: 1.05em;
+      line-height: 1.5;
     }
     @keyframes pulsoSuave {
       0%, 100% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.25); }
@@ -166,44 +168,37 @@
       font-family: 'Montserrat', sans-serif;
       animation: pulsoSuave 4s ease-in-out infinite;
       transition: background 0.3s, transform 0.2s;
-      margin: 0 8px 12px;
-    }
-    .btn-form {
-      display: inline-block;
-      background: transparent;
-      color: #f5e6cc;
-      padding: 10px 24px;
-      border: 1px solid #d4c5a8;
-      border-radius: 20px;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      transition: all 0.3s ease;
-      margin: 0 8px 12px;
+      margin: 0 8px 25px;
     }
     .btn-whatsapp:hover {
       background: #128C7E;
       transform: scale(1.04);
       animation-play-state: paused;
     }
-    .btn-form:hover {
-      background: rgba(212, 175, 55, 0.15);
-      border-color: #f5e6cc;
-      color: #fff;
+    .formulario-contacto {
+      margin-top: 30px;
+      padding: 25px;
+      background: rgba(23, 17, 13, 0.85);
+      border-radius: 12px;
+      border: 1px solid #3a2e25;
+      max-width: 550px;
+      margin: 40px auto 0;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      max-width: 500px;
-      margin: 25px auto 0;
-      padding-top: 20px;
-      border-top: 1px solid #3a2e25;
+    .formulario-contacto h3 {
+      color: #f5e6cc;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      text-align: center;
     }
-    label {
+    .formulario-contacto label {
+      display: block;
+      margin: 16px 0 6px;
       color: #d4c5a8;
       font-size: 0.95em;
     }
-    input, textarea {
+    .formulario-contacto input,
+    .formulario-contacto textarea {
       width: 100%;
       padding: 10px;
       background: rgba(20, 15, 12, 0.7);
@@ -211,23 +206,28 @@
       border-radius: 8px;
       color: #f5e6cc;
       font-family: 'Montserrat', sans-serif;
+      font-size: 1em;
     }
-    textarea {
-      min-height: 100px;
+    .formulario-contacto textarea {
+      min-height: 120px;
       resize: vertical;
     }
     .btn-submit {
       background: #8B5A3C;
       color: white;
-      padding: 10px;
       border: none;
-      border-radius: 8px;
+      padding: 11px 24px;
+      border-radius: 20px;
       font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
       cursor: pointer;
-      transition: background 0.25s;
+      display: block;
+      margin: 25px auto 0;
+      transition: background 0.25s, transform 0.15s;
     }
     .btn-submit:hover {
       background: #724930;
+      transform: scale(1.03);
     }
     footer {
       text-align: center;
@@ -252,9 +252,9 @@
       .producto {
         max-width: 95%;
       }
-      .btn-whatsapp, .btn-form {
+      .btn-whatsapp {
         display: block;
-        margin: 10px auto;
+        margin: 15px auto;
         width: fit-content;
         min-width: 220px;
       }
@@ -312,25 +312,32 @@
 
   <div class="contacto">
     <h2>¿Te gustaría una web como estas para tu emprendimiento?</h2>
-    <p>Envíame un mensaje y conversamos sin compromiso. ¡Diseño sitios que reflejan tu esencia!</p>
+    <p class="intro">Envíame un mensaje y conversamos sin compromiso. ¡Diseño sitios que reflejan tu esencia!</p>
     
-    <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20Creaciones%20Web%2013%3A20%20y%20me%20interesa%20una%20p%C3%A1gina%20web." class="btn-whatsapp" target="_blank">
+    <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20Creaciones%20Web%2013%3A20%20y%20me%20interesa%20una%20p%C3%A1gina%20web." 
+       class="btn-whatsapp" target="_blank">
       ✉️ Consultar por WhatsApp
     </a>
-    <a href="#formulario" class="btn-form">
-      📝 Formulario de contacto
-    </a>
 
-    <form id="formulario" name="contacto" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="contacto" />
-      <label for="nombre">Nombre</label>
-      <input type="text" id="nombre" name="nombre" required />
-      <label for="email">Correo electrónico</label>
-      <input type="email" id="email" name="email" required />
-      <label for="mensaje">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" required></textarea>
-      <button type="submit" class="btn-submit">Enviar consulta</button>
-    </form>
+    <div class="formulario-contacto">
+      <h3>O si preferís, contactame desde este formulario</h3>
+      <form action="https://formsubmit.co/creacionesweb1320@gmail.com" method="POST">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required placeholder="tu@email.com">
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" required placeholder="Tu mensaje..."></textarea>
+
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde Creaciones Web 13:20">
+        <input type="hidden" name="_autoresponse" value="¡Gracias por contactarme! Pronto te responderé.">
+        <input type="hidden" name="_captcha" value="true">
+
+        <button type="submit" class="btn-submit">Enviar mensaje</button>
+      </form>
+    </div>
   </div>
 
   <footer>
