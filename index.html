@@ -27,7 +27,7 @@
       overflow-x: hidden;
     }
 
-    /* 🌿 FONDO PRINCIPAL: textura.mp4 — EN BUCLE, DETRÁS DE TODO (como en BR Confecciones) */
+    /* 🌿 FONDO PRINCIPAL: textura.mp4 — EN BUCLE, SIN OPACIDAD, SIN FILTROS */
     .background-video {
       position: fixed;
       top: 0;
@@ -47,10 +47,11 @@
       left: 50%;
       transform: translate(-50%, -50%);
       object-fit: cover;
-      opacity: 0.1; /* ✅ MUY SUTIL —como en BR Confecciones */
+      opacity: 1; /* ✅ SIN OPACIDAD —COMO EN BR CONFECCIONES */
+      filter: brightness(1.1) contrast(1.05); /* ✅ LIGERO AUMENTO DE BRILLO PARA QUE SE VEA CLARO */
     }
 
-    /* 🎬 VIDEO DE CABECERA: creacionesweb.mp4 — CENTRADO, NO OCUPA TODA LA PANTALLA, SIN OPACIDAD, SIN LOOP */
+    /* 🎬 VIDEO DE CABECERA: creacionesweb.mp4 — CENTRADO, SIN OPACIDAD, SIN SOMBRAS, QUE SE REPRODUCE */
     .hero-video-container {
       width: 100%;
       max-width: 900px;
@@ -63,10 +64,11 @@
       width: 100%;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       display: block;
       margin: 0 auto;
-      opacity: 1; /* ✅ SIN OPACIDAD —CLARO, COMO EN BR CONFECCIONES */
+      opacity: 1; /* ✅ SIN OPACIDAD —CLARO, COMO UN VIDEO NORMAL */
+      box-shadow: none; /* ✅ SIN SOMBRA —COMO EN BR CONFECCIONES */
+      border: none;
     }
 
     /* 📄 TEXTO SOBRE EL VIDEO DE CABECERA — IGUAL QUE EN BR CONFECCIONES */
@@ -109,7 +111,7 @@
       font-weight: 600;
     }
 
-    /* 🖼️ GALERÍA — SOBRE EL FONDO, NO SOBRE EL VIDEO DE CABECERA */
+    /* 🖼️ GALERÍA — SOBRE EL FONDO, NO SOBRE EL VIDEO */
     .galeria {
       display: flex;
       flex-wrap: wrap;
@@ -303,14 +305,14 @@
 </head>
 <body>
 
-  <!-- 🌿 FONDO PRINCIPAL: textura.mp4 — EN BUCLE, DETRÁS DE TODO -->
+  <!-- 🌿 FONDO PRINCIPAL: textura.mp4 — EN BUCLE, SIN OPACIDAD, SIN FILTROS -->
   <div class="background-video">
     <video autoplay muted loop playsinline>
       <source src="img/textura.mp4" type="video/mp4">
     </video>
   </div>
 
-  <!-- 🎬 VIDEO DE CABECERA: creacionesweb.mp4 — CENTRADO, NO OCUPA TODA LA PANTALLA, SIN OPACIDAD, SIN LOOP -->
+  <!-- 🎬 VIDEO DE CABECERA: creacionesweb.mp4 — CENTRADO, SIN OPACIDAD, SIN SOMBRAS, QUE SE REPRODUCE -->
   <div class="hero-video-container">
     <video autoplay playsinline>
       <source src="img/creacionesweb.mp4" type="video/mp4">
@@ -320,12 +322,11 @@
   <!-- 📄 TEXTO SOBRE EL VIDEO DE CABECERA -->
   <div class="hero-content">
     <h1>Creaciones Web 13:20</h1>
-    <h2>Diseño web con alma, artesanal y a medida</h2>
-    <p>Sitios elegantes, funcionales y con identidad propia — ideales para emprendedores, artistas y pequeñas marcas.</p>
+    <h2>Diseño web con alma, artesanal y a medida. Sitios elegantes, funcionales y con identidad propia — ideales para emprendedores, artistas y pequeñas marcas.</h2>
     <span class="clave">13:20 — La clave que no se ve, pero se siente</span>
   </div>
 
-  <!-- 🖼️ GALERÍA — SOBRE EL FONDO -->
+  <!-- 🖼️ GALERÍA -->
   <div class="galeria">
     <!-- 1. BR Confecciones (REAL) -->
     <div class="producto">
@@ -388,7 +389,7 @@
     </div>
   </div>
 
-  <!-- 📩 CONTACTO — SOBRE EL FONDO -->
+  <!-- 📩 CONTACTO -->
   <div class="contacto">
     <h2>¿Querés un sitio como estos?</h2>
     <p class="intro">Envíame un mensaje y conversamos sobre tu proyecto. ¡Sin compromiso!</p>
