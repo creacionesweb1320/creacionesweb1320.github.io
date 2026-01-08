@@ -48,10 +48,10 @@
       transform: translate(-50%, -50%);
       object-fit: cover;
       opacity: 1; /* ✅ SIN OPACIDAD —COMO EN BR CONFECCIONES */
-      filter: brightness(1.1) contrast(1.05); /* ✅ LIGERO AUMENTO DE BRILLO PARA QUE SE VEA CLARO */
+      filter: brightness(1.1) contrast(1.05); /* ✅ LIGERO BRILLO PARA QUE SE VEA CLARO */
     }
 
-    /* 🎬 VIDEO DE CABECERA: creacionesweb.mp4 — CENTRADO, SIN OPACIDAD, SIN SOMBRAS, QUE SE REPRODUCE */
+    /* 🎬 VIDEO DE CABECERA: creacionesweb.mp4 — CENTRADO, COMO UN ELEMENTO, NO COMO FONDO */
     .hero-video-container {
       width: 100%;
       max-width: 900px;
@@ -67,41 +67,44 @@
       display: block;
       margin: 0 auto;
       opacity: 1; /* ✅ SIN OPACIDAD —CLARO, COMO UN VIDEO NORMAL */
-      box-shadow: none; /* ✅ SIN SOMBRA —COMO EN BR CONFECCIONES */
+      box-shadow: none;
       border: none;
     }
 
-    /* 📄 TEXTO SOBRE EL VIDEO DE CABECERA — IGUAL QUE EN BR CONFECCIONES */
-    .hero-content {
+    /* 🖤 BOX DE TEXTO SOBRE EL VIDEO — IGUAL QUE EN BR CONFECCIONES */
+    .hero-text-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 700px;
+      padding: 40px 30px;
+      background: rgba(17, 12, 9, 0.7);
+      border-radius: 16px;
+      border: 1px solid #3a2e25;
       text-align: center;
-      margin-bottom: 80px;
       z-index: 3;
-      position: relative;
-    }
-    .hero-content h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.6em;
       color: #f5e6cc;
-      margin: 0 0 15px;
+      font-family: 'Cormorant Garamond', serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .hero-text-box h1 {
+      font-size: 2.4em;
+      margin: 0 0 10px;
+      color: #f5e6cc;
       text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
     }
-    .hero-content h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4em;
+    .hero-text-box h2 {
+      font-size: 1.3em;
+      margin: 10px 0 20px;
       color: #d4c5a8;
-      margin: 10px 0 30px;
       font-weight: 400;
+      line-height: 1.5;
     }
-    .hero-content p {
-      color: #c8b89f;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      font-size: 1.1em;
-      line-height: 1.7;
-    }
-    .hero-content .clave {
+    .hero-text-box .clave {
       display: inline-block;
-      background: rgba(50, 40, 30, 0.3);
+      background: rgba(50, 40, 30, 0.5);
       border: 1px solid #d4af37;
       color: #f5e6cc;
       padding: 8px 16px;
@@ -109,6 +112,7 @@
       font-size: 0.9em;
       letter-spacing: 1px;
       font-weight: 600;
+      margin-top: 15px;
     }
 
     /* 🖼️ GALERÍA — SOBRE EL FONDO, NO SOBRE EL VIDEO */
@@ -292,8 +296,9 @@
     }
 
     @media (max-width: 600px) {
-      .hero-content h1 { font-size: 2.2em; }
-      .hero-content h2 { font-size: 1.2em; }
+      .hero-text-box h1 { font-size: 2em; }
+      .hero-text-box h2 { font-size: 1.1em; }
+      .hero-text-box { padding: 30px 20px; }
       .hero-video-container { margin: 60px auto 40px; }
       .producto { max-width: 95%; }
       .contacto h2 { font-size: 1.7em; }
@@ -305,28 +310,28 @@
 </head>
 <body>
 
-  <!-- 🌿 FONDO PRINCIPAL: textura.mp4 — EN BUCLE, SIN OPACIDAD, SIN FILTROS -->
+  <!-- 🌿 FONDO PRINCIPAL: textura.mp4 — EN BUCLE, SIN OPACIDAD -->
   <div class="background-video">
     <video autoplay muted loop playsinline>
       <source src="img/textura.mp4" type="video/mp4">
     </video>
   </div>
 
-  <!-- 🎬 VIDEO DE CABECERA: creacionesweb.mp4 — CENTRADO, SIN OPACIDAD, SIN SOMBRAS, QUE SE REPRODUCE -->
+  <!-- 🎬 VIDEO DE CABECERA: creacionesweb.mp4 — CENTRADO, COMO UN ELEMENTO -->
   <div class="hero-video-container">
     <video autoplay playsinline>
       <source src="img/creacionesweb.mp4" type="video/mp4">
     </video>
   </div>
 
-  <!-- 📄 TEXTO SOBRE EL VIDEO DE CABECERA -->
-  <div class="hero-content">
+  <!-- 🖤 BOX DE TEXTO SOBRE EL VIDEO — IGUAL QUE EN BR CONFECCIONES -->
+  <div class="hero-text-box">
     <h1>Creaciones Web 13:20</h1>
-    <h2>Diseño web con alma, artesanal y a medida. Sitios elegantes, funcionales y con identidad propia — ideales para emprendedores, artistas y pequeñas marcas.</h2>
+    <h2>Diseño web con alma, artesanal y a medida.<br>Sitios elegantes, funcionales y con identidad propia — ideales para emprendedores, artistas y pequeñas marcas.</h2>
     <span class="clave">13:20 — La clave que no se ve, pero se siente</span>
   </div>
 
-  <!-- 🖼️ GALERÍA -->
+  <!-- 🖼️ GALERÍA — SOBRE EL FONDO -->
   <div class="galeria">
     <!-- 1. BR Confecciones (REAL) -->
     <div class="producto">
