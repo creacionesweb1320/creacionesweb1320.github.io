@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Creaciones Web 13:20 – Diseño Consciente</title>
+  <title>Creaciones Web 13:20 – Diseño Web Artesanal</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <meta name="description" content="Diseño web artesanal para emprendedores, artistas y creadores sensibles. Sitios que no gritan… solo acogen.">
+  <meta name="description" content="Diseño web esencial para artesanos, emprendedores y creadores. Sitios claros, honestos y centrados en tu trabajo.">
   <meta property="og:title" content="Creaciones Web 13:20">
-  <meta property="og:description" content="Diseño web consciente: sitios que respetan tu quietud, tu historia y tu propósito.">
+  <meta property="og:description" content="Diseño web artesanal para emprendedores. Sitios elegantes, funcionales y con identidad propia.">
   <meta property="og:image" content="https://creacionesweb1320.github.io/img/preview.jpg">
   <meta property="og:url" content="https://creacionesweb1320.github.io/">
   <meta property="og:type" content="website">
@@ -21,23 +21,21 @@
     }
     body {
       font-family: 'Montserrat', sans-serif;
-      background: #000;
+      background: #1b1410;
       color: #fff;
       line-height: 1.6;
       overflow-x: hidden;
     }
-
-    /* 🌿 FONDO PRINCIPAL: textura.mp4 — EN BUCLE, SIN OPACIDAD, SIN FILTROS */
-    .background-video {
+    .fondo-loop {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 1;
+      z-index: -1;
       overflow: hidden;
     }
-    .background-video video {
+    .fondo-loop video {
       min-width: 100%;
       min-height: 100%;
       width: auto;
@@ -47,89 +45,57 @@
       left: 50%;
       transform: translate(-50%, -50%);
       object-fit: cover;
-      opacity: 1; /* ✅ SIN OPACIDAD —COMO EN BR CONFECCIONES */
-      filter: brightness(1.1) contrast(1.05); /* ✅ LIGERO BRILLO PARA QUE SE VEA CLARO */
+      opacity: 0.75;
     }
-
-    /* 🎬 VIDEO DE CABECERA: creacionesweb.mp4 — CENTRADO, COMO UN ELEMENTO, NO COMO FONDO */
-    .hero-video-container {
-      width: 100%;
-      max-width: 900px;
-      margin: 80px auto 60px;
-      position: relative;
-      z-index: 2;
+    .descripcion {
       text-align: center;
-    }
-    .hero-video-container video {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      display: block;
-      margin: 0 auto;
-      opacity: 1; /* ✅ SIN OPACIDAD —CLARO, COMO UN VIDEO NORMAL */
-      box-shadow: none;
-      border: none;
-    }
-
-    /* 🖤 BOX DE TEXTO SOBRE EL VIDEO — IGUAL QUE EN BR CONFECCIONES */
-    .hero-text-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      max-width: 700px;
-      padding: 40px 30px;
-      background: rgba(17, 12, 9, 0.7);
-      border-radius: 16px;
+      padding: 50px 30px 30px;
+      max-width: 750px;
+      margin: 0 auto 30px;
+      background: rgba(20, 15, 12, 0.85);
+      backdrop-filter: blur(2px);
       border: 1px solid #3a2e25;
-      text-align: center;
-      z-index: 3;
-      color: #f5e6cc;
-      font-family: 'Cormorant Garamond', serif;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border-radius: 12px;
+      position: relative;
+      z-index: 1;
     }
-    .hero-text-box h1 {
+    .descripcion h1 {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 2.4em;
-      margin: 0 0 10px;
       color: #f5e6cc;
+      margin: 15px 0;
       text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
     }
-    .hero-text-box h2 {
-      font-size: 1.3em;
-      margin: 10px 0 20px;
+    .descripcion p {
+      font-size: 1.1em;
       color: #d4c5a8;
+      margin: 20px auto;
       font-weight: 400;
-      line-height: 1.5;
     }
-    .hero-text-box .clave {
-      display: inline-block;
-      background: rgba(50, 40, 30, 0.5);
-      border: 1px solid #d4af37;
-      color: #f5e6cc;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.9em;
-      letter-spacing: 1px;
-      font-weight: 600;
-      margin-top: 15px;
+    .highlight {
+      background: rgba(50, 40, 30, 0.4);
+      border-left: 3px solid #d4af37;
+      padding: 12px 16px;
+      margin: 20px 0;
+      font-style: italic;
+      color: #c8b89f;
+      text-align: center;
+      border-radius: 0 8px 8px 0;
     }
-
-    /* 🖼️ GALERÍA — SOBRE EL FONDO, NO SOBRE EL VIDEO */
     .galeria {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 25px;
-      padding: 80px 20px 100px;
+      padding: 30px 20px;
       max-width: 1200px;
       margin: 0 auto;
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
     .producto {
       width: 100%;
-      max-width: 280px;
+      max-width: 260px;
       background: rgba(31, 24, 19, 0.88);
       backdrop-filter: blur(2px);
       border-radius: 12px;
@@ -139,7 +105,7 @@
       border: 1px solid #3a2e25;
     }
     .producto:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
       box-shadow: 0 12px 24px rgba(0,0,0,.5), 0 0 22px rgba(212,175,55,.3), inset 0 0 18px rgba(212,175,55,.2);
     }
     .producto img {
@@ -164,30 +130,21 @@
       font-size: 0.92em;
       margin: 4px 0;
     }
-    .producto .categoria {
-      display: block;
-      font-size: 0.8em;
-      color: #d4af37;
-      margin-top: 8px;
-      font-style: italic;
-    }
-
-    /* 📩 CONTACTO — IGUAL QUE EN BR CONFECCIONES */
     .contacto {
       text-align: center;
-      padding: 80px 20px 60px;
+      padding: 50px 20px 40px;
       background: rgba(23, 17, 13, 0.85);
       backdrop-filter: blur(2px);
       margin-top: 30px;
       border-top: 1px solid #3a2e25;
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
     .contacto h2 {
       color: #f5e6cc;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2em;
       margin-bottom: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8em;
     }
     .contacto p.intro {
       color: #d4c5a8;
@@ -196,7 +153,11 @@
       font-size: 1.05em;
       line-height: 1.5;
     }
-    .contacto .btn-whatsapp {
+    @keyframes pulsoSuave {
+      0%, 100% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.25); }
+      50% { box-shadow: 0 0 18px rgba(37, 211, 102, 0.6), 0 0 32px rgba(37, 211, 102, 0.35); }
+    }
+    .btn-whatsapp {
       display: inline-block;
       background: #25D366;
       color: #fff;
@@ -207,14 +168,13 @@
       font-family: 'Montserrat', sans-serif;
       animation: pulsoSuave 4s ease-in-out infinite;
       transition: background 0.3s, transform 0.2s;
-      margin: 0 auto 25px;
+      margin: 0 8px 25px;
     }
-    .contacto .btn-whatsapp:hover {
+    .btn-whatsapp:hover {
       background: #128C7E;
       transform: scale(1.04);
       animation-play-state: paused;
     }
-
     .formulario-contacto {
       margin-top: 30px;
       padding: 25px;
@@ -269,7 +229,6 @@
       background: #724930;
       transform: scale(1.03);
     }
-
     footer {
       text-align: center;
       padding: 25px 20px;
@@ -280,132 +239,88 @@
       background: rgba(20, 15, 12, 0.85);
       backdrop-filter: blur(2px);
       position: relative;
-      z-index: 2;
-    }
-    footer p {
-      margin: 10px 0;
+      z-index: 1;
     }
     footer a {
       color: #25D366;
       text-decoration: none;
     }
-
-    @keyframes pulsoSuave {
-      0%, 100% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.25); }
-      50% { box-shadow: 0 0 18px rgba(37, 211, 102, 0.6), 0 0 32px rgba(37, 211, 102, 0.35); }
-    }
-
     @media (max-width: 600px) {
-      .hero-text-box h1 { font-size: 2em; }
-      .hero-text-box h2 { font-size: 1.1em; }
-      .hero-text-box { padding: 30px 20px; }
-      .hero-video-container { margin: 60px auto 40px; }
-      .producto { max-width: 95%; }
-      .contacto h2 { font-size: 1.7em; }
-      .contacto .btn-whatsapp { display: block; width: 80%; margin: 15px auto; }
-      .formulario-contacto { padding: 20px; margin: 30px auto 0; }
-      .formulario-contacto h3 { font-size: 1.4em; }
+      .descripcion {
+        padding: 30px 15px;
+      }
+      .producto {
+        max-width: 95%;
+      }
+      .btn-whatsapp {
+        display: block;
+        margin: 15px auto;
+        width: fit-content;
+        min-width: 220px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- 🌿 FONDO PRINCIPAL: textura.mp4 — EN BUCLE, SIN OPACIDAD -->
-  <div class="background-video">
+  <div class="fondo-loop">
     <video autoplay muted loop playsinline>
       <source src="img/textura.mp4" type="video/mp4">
     </video>
   </div>
 
-  <!-- 🎬 VIDEO DE CABECERA: creacionesweb.mp4 — CENTRADO, COMO UN ELEMENTO -->
-  <div class="hero-video-container">
-    <video autoplay playsinline>
-      <source src="img/creacionesweb.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <!-- 🖤 BOX DE TEXTO SOBRE EL VIDEO — IGUAL QUE EN BR CONFECCIONES -->
-  <div class="hero-text-box">
+  <div class="descripcion">
     <h1>Creaciones Web 13:20</h1>
-    <h2>Diseño web con alma, artesanal y a medida.<br>Sitios elegantes, funcionales y con identidad propia — ideales para emprendedores, artistas y pequeñas marcas.</h2>
-    <span class="clave">13:20 — La clave que no se ve, pero se siente</span>
+    <p>Soy Raul, diseñador web independiente y artesano textil.<br>
+       Combino el cuidado del oficio manual con la claridad del diseño digital.</p>
+    <div class="highlight">
+      Trabajo desde lo esencial, sin promesas vacías.
+    </div>
+    <p>Creo sitios web rápidos, claros y centrados en tu trabajo:<br>
+       para costureras, ceramistas, músicos, emprendedores y creadores.</p>
   </div>
 
-  <!-- 🖼️ GALERÍA — SOBRE EL FONDO -->
   <div class="galeria">
-    <!-- 1. BR Confecciones (REAL) -->
     <div class="producto">
-      <img src="img/brconfecciones.jpg" alt="BR Confecciones - Tienda de confección artesanal">
+      <img src="img/brconfecciones.jpg" alt="BR Confecciones">
       <div class="info">
         <h3>BR Confecciones</h3>
         <p>Sitio real: tienda de confección artesanal con galería y WhatsApp integrado.</p>
-        <span class="categoria">Confección manual — vestidos, trajes, detalles hechos a mano</span>
       </div>
     </div>
-
-    <!-- 2. FlashBack Radio (REAL) -->
     <div class="producto">
-      <img src="img/flashbackradio.jpg" alt="FlashBack Radio - Radio en vivo con diseño dinámico">
+      <img src="img/flashbackradio.jpg" alt="FlashBack Radio">
       <div class="info">
         <h3>FlashBack Radio</h3>
         <p>Sitio real: radio en vivo con diseño dinámico y fondo en movimiento.</p>
-        <span class="categoria">Radio independiente — música, voz, memoria</span>
       </div>
     </div>
-
-    <!-- 3. Atelier Clara (Ejemplo) -->
     <div class="producto">
-      <img src="img/atelierclara.jpg" alt="Atelier Clara - Portfolio para diseñadora de moda">
+      <img src="img/atelierclara.jpg" alt="Atelier Clara">
       <div class="info">
         <h3>Atelier Clara</h3>
         <p>Ejemplo: portfolio para diseñadora de moda con galería interactiva.</p>
-        <span class="categoria">Costura fina — vestidos de novia, trajes a medida</span>
       </div>
     </div>
-
-    <!-- 4. Cerámica Tierra Viva (Ejemplo) -->
     <div class="producto">
-      <img src="img/ceramica.jpg" alt="Cerámica Tierra Viva - Tienda artesanal con catálogo">
+      <img src="img/ceramica.jpg" alt="Cerámica Tierra Viva">
       <div class="info">
         <h3>Cerámica Tierra Viva</h3>
         <p>Ejemplo: tienda artesanal con catálogo y formulario de pedidos.</p>
-        <span class="categoria">Artesanía en greda — cocción a 1280°C</span>
-      </div>
-    </div>
-
-    <!-- 5. Refugio El Roble (Ejemplo) -->
-    <div class="producto">
-      <img src="img/refugioelroble.jpg" alt="Refugio El Roble - Cabaña de alojamiento">
-      <div class="info">
-        <h3>Refugio El Roble</h3>
-        <p>Ejemplo: web para cabaña de alojamiento, con calma y elegancia.</p>
-        <span class="categoria">Alquiler de cabaña — otoño, intimidad, silencio</span>
-      </div>
-    </div>
-
-    <!-- 6. Taller Sonoro (Ejemplo) -->
-    <div class="producto">
-      <img src="img/tallersonoro.jpg" alt="Taller Sonoro - Clases de guitarra y terapia sonora">
-      <div class="info">
-        <h3>Taller Sonoro</h3>
-        <p>Ejemplo: web minimalista para profesor de guitarra y terapia sonora.</p>
-        <span class="categoria">Clases individuales — material descargable</span>
       </div>
     </div>
   </div>
 
-  <!-- 📩 CONTACTO -->
   <div class="contacto">
-    <h2>¿Querés un sitio como estos?</h2>
-    <p class="intro">Envíame un mensaje y conversamos sobre tu proyecto. ¡Sin compromiso!</p>
+    <h2>¿Te gustaría una web como estas para tu emprendimiento?</h2>
+    <p class="intro">Envíame un mensaje y conversamos sin compromiso. ¡Diseño sitios que reflejan tu esencia!</p>
     
-    <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20Creaciones%20Web%2013%3A20%20y%20me%20interesa%20una%20p%C3%A1gina%20web%20como%20las%20que%20mostr%C3%A1s%20en%20tu%20galer%C3%ADa." 
+    <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20Creaciones%20Web%2013%3A20%20y%20me%20interesa%20una%20p%C3%A1gina%20web." 
        class="btn-whatsapp" target="_blank">
       ✉️ Consultar por WhatsApp
     </a>
 
     <div class="formulario-contacto">
-      <h3>O si prefieres, escríbeme desde este formulario</h3>
+      <h3>O si preferís, contactame desde este formulario</h3>
       <form action="https://formsubmit.co/creacionesweb1320@gmail.com" method="POST">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
@@ -426,10 +341,9 @@
   </div>
 
   <footer>
-    <p>Creaciones Web 13:20 &copy; 2025</p>
-    <p>Diseño web desde el corazón, para quienes crean con las manos y el alma.</p>
-    <p><a href="https://wa.me/5493548584454" style="color:#25D366;">¿Querés un sitio como estos?</a></p>
+    Creaciones Web 13:20 &copy; 2025<br>
+    Diseño web desde el corazón, para quienes crean con las manos y el alma.<br>
+    <a href="https://wa.me/5493548584454" style="color:#25D366;">¿Necesitás una web como estas?</a>
   </footer>
 </body>
-
 </html>
