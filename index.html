@@ -1,901 +1,864 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creaciones Web 13:20 – Diseño Web Artesanal</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta name="description" content="Diseño web esencial para artesanos, emprendedores y creadores. Sitios claros, honestos y centrados en tu trabajo.">
-    <meta property="og:title" content="Creaciones Web 13:20">
-    <meta property="og:description" content="Diseño web artesanal para emprendedores. Sitios elegantes, funcionales y con identidad propia.">
-    <meta property="og:image" content="https://creacionesweb1320.github.io/img/preview.jpg">
-    <meta property="og:url" content="https://creacionesweb1320.github.io/">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="es_AR">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: #d4c5a8;
-            background: #1b1410;
-            overflow-x: hidden;
-        }
-
-        /* Video de fondo */
-        .fondo-loop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        .fondo-loop video {
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            opacity: 0.75;
-        }
-
-        /* --- Estilo base para todos los boxes con efecto neón --- */
-        .neon-box {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            /* Brillo neón sutil permanente */
-            box-shadow:
-                0 4px 12px rgba(0, 0, 0, 0.4),
-                inset 0 0 8px rgba(212, 175, 55, 0.15);
-            transition: all 0.3s ease;
-        }
-
-        /* Efecto de órbita al pasar el mouse */
-        .neon-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0;
-        }
-
-        .neon-box:hover {
-            transform: translateY(-4px);
-            box-shadow:
-                0 8px 20px rgba(0, 0, 0, 0.5),
-                inset 0 0 12px rgba(212, 175, 55, 0.25);
-        }
-
-        .neon-box:hover::before {
-            opacity: 1;
-            animation: orbitGlow 2.5s ease-out forwards;
-        }
-
-        @keyframes orbitGlow {
-            0% {
-                box-shadow:
-                    0 0 0 0 rgba(212, 175, 55, 0.6),
-                    4px 0 12px rgba(212, 175, 55, 0.4);
-            }
-            25% {
-                box-shadow:
-                    0 0 0 2px rgba(212, 175, 55, 0.6),
-                    0 4px 12px rgba(212, 175, 55, 0.4);
-            }
-            50% {
-                box-shadow:
-                    0 0 0 2px rgba(212, 175, 55, 0.6),
-                    -4px 0 12px rgba(212, 175, 55, 0.4);
-            }
-            75% {
-                box-shadow:
-                    0 0 0 2px rgba(212, 175, 55, 0.6),
-                    0 -4px 12px rgba(212, 175, 55, 0.4);
-            }
-            100% {
-                box-shadow:
-                    0 0 0 2px rgba(212, 175, 55, 0.6),
-                    4px 0 12px rgba(212, 175, 55, 0.4);
-            }
-        }
-
-        /* Header con video */
-        .cabecera-video {
-            width: 100%;
-            max-width: 800px;
-            margin: 40px auto 50px;
-        }
-        .cabecera-video video {
-            width: 100%;
-            display: block;
-            background: #000;
-            border-radius: 12px;
-        }
-
-        /* Contenedor principal */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px 60px;
-        }
-
-        /* Sección principal */
-        .section {
-            background: rgba(20, 15, 12, 0.85);
-            border: 1px solid #3a2e25;
-            border-radius: 12px;
-            padding: 50px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(2px);
-        }
-
-        .section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: #f5e6cc;
-            text-align: center;
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
-            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
-            padding-bottom: 15px;
-        }
-
-        .section p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .section strong {
-            color: #f5e6cc;
-        }
-
-        /* Lista de beneficios */
-        .benefits-list {
-            list-style: none;
-            padding: 0;
-            margin: 30px 0;
-        }
-
-        .benefits-list li {
-            padding: 12px 0 12px 40px;
-            position: relative;
-            font-size: 1.05rem;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            margin-bottom: 10px;
-        }
-
-        .benefits-list li:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .benefits-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            top: 12px;
-            width: 28px;
-            height: 28px;
-            background: rgba(212, 175, 55, 0.2);
-            border: 2px solid #d4af37;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #d4af37;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        /* Proyectos */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-            margin-top: 40px;
-        }
-
-        .project-card {
-            background: rgba(31, 24, 19, 0.88);
-            border: 1px solid #3a2e25;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            border-color: #d4af37;
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: contain;
-            object-position: center;
-            background: #1f1813;
-            display: block;
-            border-bottom: 1px solid #3a2e25;
-        }
-
-        .project-info {
-            padding: 25px;
-        }
-
-        .project-info h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: #f5e6cc;
-        }
-
-        .project-info p {
-            margin-bottom: 15px;
-            color: #c8b89f;
-            font-size: 1rem;
-        }
-
-        .project-info strong {
-            color: #f5e6cc;
-        }
-
-        .project-info ul {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-        }
-
-        .project-info ul li {
-            padding: 6px 0 6px 25px;
-            position: relative;
-            font-size: 0.95rem;
-            color: #c8b89f;
-        }
-
-        .project-info ul li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #d4af37;
-            font-size: 1.2rem;
-        }
-
-        .project-link {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.2);
-            color: #d4af37;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            border: 1px solid #d4af37;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .project-link:hover {
-            background: rgba(212, 175, 55, 0.4);
-            transform: scale(1.03);
-        }
-
-        /* Proceso de trabajo */
-        .process-steps {
-            counter-reset: step-counter;
-            margin-top: 30px;
-        }
-
-        .process-step {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 90px;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .process-step:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .process-step:before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 70px;
-            height: 70px;
-            background: rgba(212, 175, 55, 0.15);
-            border: 2px solid #d4af37;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #d4af37;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .process-step h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #f5e6cc;
-        }
-
-        .process-step p {
-            color: #d4c5a8;
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-
-        /* Precios */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-            margin-top: 40px;
-        }
-
-        .pricing-card {
-            background: rgba(31, 24, 19, 0.88);
-            border: 1px solid #3a2e25;
-            border-radius: 12px;
-            padding: 35px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-6px);
-            border-color: #d4af37;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-        }
-
-        .pricing-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: #f5e6cc;
-        }
-
-        .pricing-card .price {
-            font-size: 2.8rem;
-            font-weight: bold;
-            color: #d4af37;
-            margin: 15px 0;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .pricing-card .price small {
-            font-size: 0.8rem;
-            color: #c8b89f;
-            font-weight: normal;
-        }
-
-        .pricing-card p {
-            margin-bottom: 20px;
-            color: #c8b89f;
-            font-size: 1rem;
-        }
-
-        .pricing-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-
-        .pricing-card ul li {
-            padding: 10px 0;
-            color: #c8b89f;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            font-size: 0.95rem;
-        }
-
-        .pricing-card ul li:last-child {
-            border-bottom: none;
-        }
-
-        /* Contacto - WhatsApp */
-        .whatsapp-section {
-            text-align: center;
-            padding: 40px;
-            margin-bottom: 40px;
-        }
-
-        .whatsapp-section p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            color: #d4c5a8;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        @keyframes pulsoSuave {
-            0%, 100% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.25); }
-            50% { box-shadow: 0 0 18px rgba(37, 211, 102, 0.6), 0 0 32px rgba(37, 211, 102, 0.35); }
-        }
-
-        .whatsapp-btn {
-            display: inline-block;
-            background: #25D366;
-            color: white;
-            padding: 15px 50px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s ease;
-            animation: pulsoSuave 4s ease-in-out infinite;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .whatsapp-btn:hover {
-            background: #128C7E;
-            transform: scale(1.05);
-            animation-play-state: paused;
-        }
-
-        /* Formulario de contacto */
-        .form-section {
-            background: rgba(23, 17, 13, 0.85);
-            border: 1px solid #3a2e25;
-            border-radius: 12px;
-            padding: 40px;
-            margin-top: 30px;
-            backdrop-filter: blur(2px);
-        }
-
-        .form-section h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: #f5e6cc;
-            text-align: center;
-        }
-
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        form p {
-            margin-bottom: 20px;
-        }
-
-        form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #f5e6cc;
-            font-size: 1rem;
-        }
-
-        form input,
-        form textarea {
-            width: 100%;
-            padding: 12px 15px;
-            background: rgba(20, 15, 12, 0.7);
-            border: 1px solid #3a2e25;
-            border-radius: 8px;
-            color: #f5e6cc;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        form input:focus,
-        form textarea:focus {
-            outline: none;
-            border-color: #d4af37;
-        }
-
-        form textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: #8B5A3C;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 20px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            font-family: 'Montserrat', sans-serif;
-            cursor: pointer;
-            display: block;
-            margin: 25px auto 0;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background: #724930;
-            transform: scale(1.03);
-        }
-
-        /* Contacto alternativo */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .contact-icon {
-            font-size: 1.8rem;
-            color: #d4af37;
-            min-width: 30px;
-        }
-
-        .contact-text h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-            color: #f5e6cc;
-        }
-
-        .contact-text p,
-        .contact-text a {
-            color: #c8b89f;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .contact-text a:hover {
-            color: #25D366;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(20, 15, 12, 0.85);
-            color: #b8a580;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 20px;
-            border-top: 1px solid #3a2e25;
-            backdrop-filter: blur(2px);
-        }
-
-        footer p {
-            margin-bottom: 8px;
-        }
-
-        footer a {
-            color: #25D366;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .section {
-                padding: 40px 30px;
-            }
-
-            .section h2 {
-                font-size: 1.8rem;
-            }
-
-            .process-step {
-                padding-left: 80px;
-            }
-
-            .process-step:before {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
-            }
-
-            .pricing-card .price {
-                font-size: 2.2rem;
-            }
-
-            .whatsapp-btn {
-                width: 100%;
-                padding: 15px 20px;
-                font-size: 1.1rem;
-            }
-
-            .cabecera-video {
-                margin: 30px auto 40px;
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section {
-                padding: 30px 20px;
-            }
-
-            .section h2 {
-                font-size: 1.6rem;
-            }
-
-            .process-step {
-                padding-left: 70px;
-            }
-
-            .process-step:before {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
-
-            .projects-grid,
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creaciones Web 13:20 – Diseño Web Artesanal</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta name="description" content="Diseño web esencial para artesanos, emprendedores y creadores. Sitios claros, honestos y centrados en tu trabajo.">
+<meta property="og:title" content="Creaciones Web 13:20">
+<meta property="og:description" content="Diseño web artesanal para emprendedores. Sitios elegantes, funcionales y con identidad propia.">
+<meta property="og:image" content="https://creacionesweb1320.github.io/img/preview.jpg">
+<meta property="og:url" content="https://creacionesweb1320.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  color: #d4c5a8;
+  background: #1b1410;
+  overflow-x: hidden;
+}
+/* Video de fondo */
+.fondo-loop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+.fondo-loop video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.75;
+}
+/* --- Estilo base para todos los boxes con efecto neón --- */
+.neon-box {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  /* Brillo neón sutil permanente */
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 0 8px rgba(212, 175, 55, 0.15);
+  transition: all 0.3s ease;
+}
+/* Efecto de órbita al pasar el mouse */
+.neon-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+}
+.neon-box:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 12px rgba(212, 175, 55, 0.25);
+}
+.neon-box:hover::before {
+  opacity: 1;
+  animation: orbitGlow 2.5s ease-out forwards;
+}
+@keyframes orbitGlow {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(212, 175, 55, 0.6),
+      4px 0 12px rgba(212, 175, 55, 0.4);
+  }
+  25% {
+    box-shadow:
+      0 0 0 2px rgba(212, 175, 55, 0.6),
+      0 4px 12px rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px rgba(212, 175, 55, 0.6),
+      -4px 0 12px rgba(212, 175, 55, 0.4);
+  }
+  75% {
+    box-shadow:
+      0 0 0 2px rgba(212, 175, 55, 0.6),
+      0 -4px 12px rgba(212, 175, 55, 0.4);
+  }
+  100% {
+    box-shadow:
+      0 0 0 2px rgba(212, 175, 55, 0.6),
+      4px 0 12px rgba(212, 175, 55, 0.4);
+  }
+}
+/* Header con video */
+.cabecera-video {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto 50px;
+}
+.cabecera-video video {
+  width: 100%;
+  display: block;
+  background: #000;
+  border-radius: 12px;
+}
+/* Contenedor principal */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+/* Sección principal */
+.section {
+  background: rgba(20, 15, 12, 0.85);
+  border: 1px solid #3a2e25;
+  border-radius: 12px;
+  padding: 50px;
+  margin-bottom: 40px;
+  backdrop-filter: blur(2px);
+}
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #f5e6cc;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 15px;
+}
+.section p {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.section strong {
+  color: #f5e6cc;
+}
+/* Lista de beneficios */
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+}
+.benefits-list li {
+  padding: 12px 0 12px 40px;
+  position: relative;
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  margin-bottom: 10px;
+}
+.benefits-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.benefits-list li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 28px;
+  height: 28px;
+  background: rgba(212, 175, 55, 0.2);
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4af37;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+/* Proyectos */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  margin-top: 40px;
+}
+.project-card {
+  background: rgba(31, 24, 19, 0.88);
+  border: 1px solid #3a2e25;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: #d4af37;
+}
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  object-position: center;
+  background: #1f1813;
+  display: block;
+  border-bottom: 1px solid #3a2e25;
+}
+.project-info {
+  padding: 25px;
+}
+.project-info h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: #f5e6cc;
+}
+.project-info p {
+  margin-bottom: 15px;
+  color: #c8b89f;
+  font-size: 1rem;
+}
+.project-info strong {
+  color: #f5e6cc;
+}
+.project-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+.project-info ul li {
+  padding: 6px 0 6px 25px;
+  position: relative;
+  font-size: 0.95rem;
+  color: #c8b89f;
+}
+.project-info ul li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #d4af37;
+  font-size: 1.2rem;
+}
+.project-link {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.2);
+  color: #d4af37;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 1px solid #d4af37;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+.project-link:hover {
+  background: rgba(212, 175, 55, 0.4);
+  transform: scale(1.03);
+}
+/* Proceso de trabajo */
+.process-steps {
+  counter-reset: step-counter;
+  margin-top: 30px;
+}
+.process-step {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 90px;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+.process-step:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.process-step:before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 70px;
+  height: 70px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #d4af37;
+  font-family: 'Cormorant Garamond', serif;
+}
+.process-step h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #f5e6cc;
+}
+.process-step p {
+  color: #d4c5a8;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+/* Precios */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  margin-top: 40px;
+}
+.pricing-card {
+  background: rgba(31, 24, 19, 0.88);
+  border: 1px solid #3a2e25;
+  border-radius: 12px;
+  padding: 35px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.pricing-card:hover {
+  transform: translateY(-6px);
+  border-color: #d4af37;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+.pricing-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #f5e6cc;
+}
+.pricing-card .price {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #d4af37;
+  margin: 15px 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+.pricing-card .price small {
+  font-size: 0.8rem;
+  color: #c8b89f;
+  font-weight: normal;
+}
+.pricing-card p {
+  margin-bottom: 20px;
+  color: #c8b89f;
+  font-size: 1rem;
+}
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+.pricing-card ul li {
+  padding: 10px 0;
+  color: #c8b89f;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  font-size: 0.95rem;
+}
+.pricing-card ul li:last-child {
+  border-bottom: none;
+}
+/* Contacto - WhatsApp */
+.whatsapp-section {
+  text-align: center;
+  padding: 40px;
+  margin-bottom: 40px;
+}
+.whatsapp-section p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  color: #d4c5a8;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+@keyframes pulsoSuave {
+  0%, 100% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.25); }
+  50% { box-shadow: 0 0 18px rgba(37, 211, 102, 0.6), 0 0 32px rgba(37, 211, 102, 0.35); }
+}
+.whatsapp-btn {
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  padding: 15px 50px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+  animation: pulsoSuave 4s ease-in-out infinite;
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+.whatsapp-btn:hover {
+  background: #128C7E;
+  transform: scale(1.05);
+  animation-play-state: paused;
+}
+/* Formulario de contacto */
+.form-section {
+  background: rgba(23, 17, 13, 0.85);
+  border: 1px solid #3a2e25;
+  border-radius: 12px;
+  padding: 40px;
+  margin-top: 30px;
+  backdrop-filter: blur(2px);
+}
+.form-section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #f5e6cc;
+  text-align: center;
+}
+form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+form p {
+  margin-bottom: 20px;
+}
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #f5e6cc;
+  font-size: 1rem;
+}
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(20, 15, 12, 0.7);
+  border: 1px solid #3a2e25;
+  border-radius: 8px;
+  color: #f5e6cc;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+.submit-btn {
+  background: #8B5A3C;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  display: block;
+  margin: 25px auto 0;
+  transition: all 0.3s ease;
+}
+.submit-btn:hover {
+  background: #724930;
+  transform: scale(1.03);
+}
+/* Contacto alternativo */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+.contact-icon {
+  font-size: 1.8rem;
+  color: #d4af37;
+  min-width: 30px;
+}
+.contact-text h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: #f5e6cc;
+}
+.contact-text p,
+.contact-text a {
+  color: #c8b89f;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+}
+.contact-text a:hover {
+  color: #25D366;
+}
+/* Footer */
+footer {
+  background: rgba(20, 15, 12, 0.85);
+  color: #b8a580;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 20px;
+  border-top: 1px solid #3a2e25;
+  backdrop-filter: blur(2px);
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: #25D366;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+/* --- Botones tipo BR Confecciones (verde) --- */
+.btn-br {
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9em;
+  margin-top: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
+.btn-br:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+}
+/* --- Botones tipo FlashBack Radio (blanco/crema) --- */
+.btn-fbr {
+  display: inline-block;
+  background: transparent;
+  color: #f5e6cc;
+  padding: 8px 18px;
+  border: 1px solid #d4c5a8;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9em;
+  margin-top: 12px;
+  transition: all 0.3s ease;
+}
+.btn-fbr:hover {
+  background: rgba(212, 175, 55, 0.1);
+  color: #fff;
+  border-color: #f5e6cc;
+  transform: translateY(-2px);
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 30px;
+  }
+  .section h2 {
+    font-size: 1.8rem;
+  }
+  .process-step {
+    padding-left: 80px;
+  }
+  .process-step:before {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+  .pricing-card .price {
+    font-size: 2.2rem;
+  }
+  .whatsapp-btn {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+  }
+  .cabecera-video {
+    margin: 30px auto 40px;
+    max-width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .section {
+    padding: 30px 20px;
+  }
+  .section h2 {
+    font-size: 1.6rem;
+  }
+  .process-step {
+    padding-left: 70px;
+  }
+  .process-step:before {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  .projects-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 <body>
-    <!-- Video de fondo -->
-    <div class="fondo-loop">
-        <video autoplay muted loop playsinline>
-            <source src="img/textura.mp4" type="video/mp4">
-        </video>
-    </div>
+<!-- Video de fondo -->
+<div class="fondo-loop">
+  <video autoplay muted loop playsinline>
+    <source src="img/textura.mp4" type="video/mp4">
+  </video>
+</div>
 
-    <!-- Contenedor principal -->
-    <div class="container">
-        <!-- Header con video -->
-        <div class="cabecera-video neon-box">
-            <video autoplay muted playsinline>
-                <source src="img/creacionesweb.mp4" type="video/mp4">
-                Tu navegador no soporta video HTML5.
-            </video>
+<!-- Header con video -->
+<div class="cabecera-video neon-box">
+  <video autoplay muted playsinline>
+    <source src="img/creacionesweb.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+</div>
+
+<!-- Contenedor principal -->
+<div class="container">
+
+  <!-- Sobre mí -->
+  <section class="section neon-box">
+    <h2>Hola, soy Raul</h2>
+    <p><strong>Desarrollador web independiente desde Capilla del Monte, Córdoba.</strong></p>
+    <p>Creo sitios simples, rápidos y funcionales para pequeños negocios que quieren estar en internet sin complicaciones.</p>
+    <p><strong>Mis sitios incluyen:</strong></p>
+ <ul class="benefits-list">
+  <li>Diseño responsive (se ve bien en celular y computadora)</li>
+  <li>Botones de WhatsApp para recibir pedidos directamente</li>
+  <li>Galerías de productos con fotos</li>
+  <li>URL personalizada gratis (ej: <em>tunegocio.github.io</em>)</li>
+  <li>Opción de dominio .com propio (desde USD ~ $12/año, opcional)</li>
+  <li>Hosting incluido y sin costo (gracias a GitHub Pages, tu sitio está siempre online)</li>
+ </ul>
+    <p><strong>No necesitás ser experto en tecnología.</strong> Yo me encargo de todo y te explico paso a paso.</p>
+  </section>
+
+  <!-- ¿Por qué un sitio web? -->
+  <section class="section neon-box">
+    <h2>¿Por qué tu negocio necesita un sitio web?</h2>
+    <ul class="benefits-list">
+      <li>Te encuentran en internet las 24 horas</li>
+      <li>Muestras tus productos o servicios a todo el país</li>
+      <li>Recibís pedidos directamente por WhatsApp</li>
+      <li>Generás confianza con presencia profesional online</li>
+      <li>Aumentás tus ventas sin depender solo del boca a boca</li>
+    </ul>
+  </section>
+
+  <!-- Proyectos realizados -->
+  <section class="section neon-box">
+    <h2>Proyectos Realizados</h2>
+    <div class="projects-grid">
+      <div class="project-card neon-box">
+        <img src="img/brconfecciones.jpg" alt="BR Confecciones">
+        <div class="project-info">
+          <h3>BR Confecciones</h3>
+          <p><strong>Sitio real:</strong> emprendimiento textil artesanal</p>
+          <ul>
+            <li>Galería de productos con fotos</li>
+            <li>Diseño responsive (celular y PC)</li>
+            <li>Contacto directo por WhatsApp</li>
+          </ul>
+          <a href="https://brconfecciones.github.io/" class="project-link" target="_blank">▶ Ver sitio</a>
         </div>
+      </div>
+      <div class="project-card neon-box">
+        <img src="img/Flashback.png" alt="Flashback Radio">
+        <div class="project-info">
+          <h3>Flashback Radio</h3>
+          <p><strong>Sitio real:</strong> radio online con diseño elegante</p>
+          <ul>
+            <li>Reproductor integrado</li>
+            <li>Diseño oscuro con efectos de luz</li>
+            <li>Información de programación</li>
+          </ul>
+          <a href="https://flashbackradio2025.github.io/" class="project-link" target="_blank">▶ Ver sitio</a>
+        </div>
+      </div>
+      <div class="project-card neon-box">
+        <img src="img/atelierclara.png" alt="Atelier Clara">
+        <div class="project-info">
+          <h3>Atelier Clara</h3>
+          <p><strong>Ejemplo:</strong> portfolio para diseñadora de moda</p>
+          <ul>
+            <li>Galería interactiva</li>
+            <li>Diseño elegante y minimalista</li>
+            <li>Enfoque en el trabajo visual</li>
+          </ul>
+          <a href="atelier-clara.html" class="btn-br" target="_blank">📸 Ver ejemplo</a>
+        </div>
+      </div>
+      <div class="project-card neon-box">
+        <img src="img/ceramica.png" alt="Cerámica Tierra Viva">
+        <div class="project-info">
+          <h3>Cerámica Tierra Viva</h3>
+          <p><strong>Ejemplo:</strong> tienda artesanal online</p>
+          <ul>
+            <li>Catálogo de productos</li>
+            <li>Formulario de pedidos</li>
+            <li>Diseño cálido y artesanal</li>
+          </ul>
+          <a href="ceramica-tierra-viva.html" class="btn-fbr" target="_blank">🔊 Explorar</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Sobre mí -->
-        <section class="section neon-box">
-            <h2>Hola, soy Raul</h2>
-            <p><strong>Desarrollador web independiente desde Capilla del Monte, Córdoba.</strong></p>
-            <p>Creo sitios simples, rápidos y funcionales para pequeños negocios que quieren estar en internet sin complicaciones.</p>
-            <p><strong>Mis sitios incluyen:</strong></p>
-            <ul class="benefits-list">
-                <li>Diseño responsive (se ve bien en celular y computadora)</li>
-                <li>Botones de WhatsApp para recibir pedidos directamente</li>
-                <li>Galerías de productos con fotos</li>
-                <li>Dominio propio (tunegocio.com)</li>
-                <li>Hosting incluido (tu sitio siempre online)</li>
-            </ul>
-            <p><strong>No necesitás ser experto en tecnología.</strong> Yo me encargo de todo y te explico paso a paso.</p>
-        </section>
+  <!-- ¿Cómo trabajo? -->
+  <section class="section neon-box">
+    <h2>¿Cómo trabajo?</h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <h3>Hablamos de lo que necesitás</h3>
+        <p>Conversamos sobre tu negocio, productos y lo que querés mostrar.</p>
+      </div>
+      <div class="process-step">
+        <h3>Te muestro un diseño preliminar</h3>
+        <p>Creo un boceto visual para que veas cómo quedará tu sitio antes de desarrollarlo.</p>
+      </div>
+      <div class="process-step">
+        <h3>Desarrollo tu sitio</h3>
+        <p>Programo y diseño tu sitio web con todo lo que acordamos.</p>
+      </div>
+      <div class="process-step">
+        <h3>Lo publico y te explico cómo usarlo</h3>
+        <p>Subo tu sitio a internet y te enseño cómo actualizarlo si lo necesitás.</p>
+      </div>
+    </div>
+  </section>
 
-        <!-- ¿Por qué un sitio web? -->
-        <section class="section neon-box">
-            <h2>¿Por qué tu negocio necesita un sitio web?</h2>
-            <ul class="benefits-list">
-                <li>Te encuentran en internet las 24 horas</li>
-                <li>Muestras tus productos o servicios a todo el país</li>
-                <li>Recibís pedidos directamente por WhatsApp</li>
-                <li>Generás confianza con presencia profesional online</li>
-                <li>Aumentás tus ventas sin depender solo del boca a boca</li>
-            </ul>
-        </section>
+  <!-- Precios -->
+  <section class="section neon-box">
+    <h2>¿Cuánto cuesta?</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card neon-box">
+        <h3>Sitio Web Básico</h3>
+        <div class="price">USD $45</div>
+        <p>Perfecto para emprendedores</p>
+        <ul>
+          <li>5 páginas</li>
+          <li>Galería de fotos</li>
+          <li>WhatsApp integrado</li>
+          <li>Dominio incluido</li>
+          <li>Hosting incluido</li>
+        </ul>
+      </div>
+      <div class="pricing-card neon-box">
+        <h3>Tienda Online Simple</h3>
+        <div class="price">USD $75</div>
+        <p>Para vender productos online</p>
+        <ul>
+          <li>Todo lo anterior</li>
+          <li>Catálogo de productos</li>
+          <li>Precios visibles</li>
+          <li>Hasta 20 productos</li>
+          <li>Actualizaciones incluidas</li>
+        </ul>
+      </div>
+      <div class="pricing-card neon-box">
+        <h3>Mantenimiento Mensual</h3>
+        <div class="price">USD $15 <small>(opcional)</small></div>
+        <p>Soporte continuo</p>
+        <ul>
+          <li>Actualizaciones de contenido</li>
+          <li>Soporte técnico básico</li>
+          <li>Resolución de problemas</li>
+          <li>Sin contrato mínimo</li>
+          <li>Cancelá cuando quieras</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-        <!-- Proyectos realizados -->
-        <section class="section neon-box">
-            <h2>Proyectos Realizados</h2>
-            <div class="projects-grid">
-                <div class="project-card neon-box">
-                    <img src="img/brconfecciones.png" alt="BR Confecciones">
-                    <div class="project-info">
-                        <h3>BR Confecciones</h3>
-                        <p><strong>Sitio real:</strong> emprendimiento textil artesanal</p>
-                        <ul>
-                            <li>Galería de productos con fotos</li>
-                            <li>Diseño responsive (celular y PC)</li>
-                            <li>Contacto directo por WhatsApp</li>
-                        </ul>
-                        <a href="https://brconfecciones.github.io/" class="project-link" target="_blank">▶ Ver sitio</a>
-                    </div>
-                </div>
-                <div class="project-card neon-box">
-                    <img src="img/Flashback.png" alt="Flashback Radio">
-                    <div class="project-info">
-                        <h3>Flashback Radio</h3>
-                        <p><strong>Sitio real:</strong> radio online con diseño elegante</p>
-                        <ul>
-                            <li>Reproductor integrado</li>
-                            <li>Diseño oscuro con efectos de luz</li>
-                            <li>Información de programación</li>
-                        </ul>
-                        <a href="https://flashbackradio2025.github.io/" class="project-link" target="_blank">▶ Ver sitio</a>
-                    </div>
-                </div>
-                <div class="project-card neon-box">
-                    <img src="img/atelierclara.jpg" alt="Atelier Clara">
-                    <div class="project-info">
-                        <h3>Atelier Clara</h3>
-                        <p><strong>Ejemplo:</strong> portfolio para diseñadora de moda</p>
-                        <ul>
-                            <li>Galería interactiva</li>
-                            <li>Diseño elegante y minimalista</li>
-                            <li>Enfoque en el trabajo visual</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="project-card neon-box">
-                    <img src="img/ceramica.jpg" alt="Cerámica Tierra Viva">
-                    <div class="project-info">
-                        <h3>Cerámica Tierra Viva</h3>
-                        <p><strong>Ejemplo:</strong> tienda artesanal online</p>
-                        <ul>
-                            <li>Catálogo de productos</li>
-                            <li>Formulario de pedidos</li>
-                            <li>Diseño cálido y artesanal</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ¿Cómo trabajo? -->
-        <section class="section neon-box">
-            <h2>¿Cómo trabajo?</h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <h3>Hablamos de lo que necesitás</h3>
-                    <p>Conversamos sobre tu negocio, productos y lo que querés mostrar.</p>
-                </div>
-                <div class="process-step">
-                    <h3>Te muestro un diseño preliminar</h3>
-                    <p>Creo un boceto visual para que veas cómo quedará tu sitio antes de desarrollarlo.</p>
-                </div>
-                <div class="process-step">
-                    <h3>Desarrollo tu sitio</h3>
-                    <p>Programo y diseño tu sitio web con todo lo que acordamos.</p>
-                </div>
-                <div class="process-step">
-                    <h3>Lo publico y te explico cómo usarlo</h3>
-                    <p>Subo tu sitio a internet y te enseño cómo actualizarlo si lo necesitás.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Precios -->
-        <section class="section neon-box">
-            <h2>¿Cuánto cuesta?</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card neon-box">
-                    <h3>Sitio Web Básico</h3>
-                    <div class="price">USD $30</div>
-                    <p>Perfecto para emprendedores</p>
-                    <ul>
-                        <li>5 páginas</li>
-                        <li>Galería de fotos</li>
-                        <li>WhatsApp integrado</li>
-                        <li>Dominio incluido</li>
-                        <li>Hosting incluido</li>
-                    </ul>
-                </div>
-                <div class="pricing-card neon-box">
-                    <h3>Tienda Online Simple</h3>
-                    <div class="price">USD $50</div>
-                    <p>Para vender productos online</p>
-                    <ul>
-                        <li>Todo lo anterior</li>
-                        <li>Catálogo de productos</li>
-                        <li>Precios visibles</li>
-                        <li>Hasta 20 productos</li>
-                        <li>Actualizaciones incluidas</li>
-                    </ul>
-                </div>
-                <div class="pricing-card neon-box">
-                    <h3>Mantenimiento Mensual</h3>
-                    <div class="price">USD $10 <small>(opcional)</small></div>
-                    <p>Soporte continuo</p>
-                    <ul>
-                        <li>Actualizaciones de contenido</li>
-                        <li>Soporte técnico básico</li>
-                        <li>Resolución de problemas</li>
-                        <li>Sin contrato mínimo</li>
-                        <li>Cancelá cuando quieras</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contacto -->
-        <section class="section neon-box">
-            <h2>Contacto</h2>
-            <div class="whatsapp-section">
-                <p>Envíame un mensaje y conversamos sin compromiso. ¡Diseño sitios que reflejan tu esencia!</p>
-                <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20Creaciones%20Web%2013%3A20%20y%20me%20interesa%20una%20p%C3%A1gina%20web." class="whatsapp-btn" target="_blank">
-                    📱 WhatsApp
-                </a>
-            </div>
-
-            <!-- Formulario de contacto -->
-            <div class="form-section">
-                <h3>O si preferís, contactame desde este formulario</h3>
-                <form action="https://formsubmit.co/creacionesweb1320@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="Nuevo mensaje desde Creaciones Web 13:20">
-                    <input type="hidden" name="_autoresponse" value="¡Gracias por contactarme! Pronto te responderé.">
-                    <input type="hidden" name="_captcha" value="true">
-                    
-                    <p>
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
-                    </p>
-                    <p>
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
-                    </p>
-                    <p>
-                        <label for="mensaje">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" required placeholder="Tu mensaje..."></textarea>
-                    </p>
-                    <button type="submit" class="submit-btn">Enviar mensaje</button>
-                </form>
-            </div>
-
-            <!-- Información de contacto alternativa -->
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div class="contact-text">
-                        <h4>Ubicación</h4>
-                        <p>Capilla del Monte, Córdoba, Argentina</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">✉️</div>
-                    <div class="contact-text">
-                        <h4>Email</h4>
-                        <p><a href="mailto:creacionesweb1320@gmail.com">creacionesweb1320@gmail.com</a></p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- Contacto -->
+  <section class="section neon-box">
+    <h2>Contacto</h2>
+    <div class="whatsapp-section">
+      <p>Envíame un mensaje y conversamos sin compromiso. ¡Diseño sitios que reflejan tu esencia!</p>
+      <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20Creaciones%20Web%2013%3A20%20y%20me%20interesa%20una%20p%C3%A1gina%20web." class="whatsapp-btn" target="_blank">
+        📱 WhatsApp
+      </a>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Creaciones Web 13:20</p>
-        <p>Diseño web desde el corazón, para quienes crean con las manos y el alma.</p>
-        <p><a href="https://wa.me/5493548584454">¿Necesitás una web como estas?</a></p>
-    </footer>
+    <!-- Formulario de contacto -->
+    <div class="form-section">
+      <h3>O si preferís, contactame desde este formulario</h3>
+      <form action="https://formsubmit.co/creacionesweb1320@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde Creaciones Web 13:20">
+        <input type="hidden" name="_autoresponse" value="¡Gracias por contactarme! Pronto te responderé.">
+        <input type="hidden" name="_captcha" value="true">
+        <p>
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+        </p>
+        <p>
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" required placeholder="tu@email.com">
+        </p>
+        <p>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" required placeholder="Tu mensaje..."></textarea>
+        </p>
+        <button type="submit" class="submit-btn">Enviar mensaje</button>
+      </form>
+    </div>
+
+    <!-- Información de contacto alternativa -->
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div class="contact-text">
+          <h4>Ubicación</h4>
+          <p>Capilla del Monte, Córdoba, Argentina</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-text">
+          <h4>Email</h4>
+          <p><a href="mailto:creacionesweb1320@gmail.com">creacionesweb1320@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 Creaciones Web 13:20</p>
+  <p>Diseño web desde el corazón, para quienes crean con las manos y el alma.</p>
+  <p><a href="https://wa.me/5493548584454">¿Necesitás una web como estas?</a></p>
+</footer>
+
 </body>
 </html>
