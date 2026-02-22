@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesorios Bohemios - Ejemplo Intermedio | Creaciones Web 13:20</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #1b1410;
+            color: #d4c5a8;
+            line-height: 1.6;
+        }
+
+        .demo-banner {
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
+            color: #f5e6cc;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .demo-banner a {
+            color: #d4af37;
+            text-decoration: underline;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2d1f1a 0%, #1b1410 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: #f5e6cc;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #c8b89f;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* CATEGORÍAS */
+        .categoria {
+            margin-bottom: 50px;
+        }
+
+        .categoria h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #d4af37;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .producto-card {
+            background: rgba(31, 24, 19, 0.88);
+            border: 1px solid #3a2e25;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+
+        .producto-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #2d1f1a;
+        }
+
+        .producto-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .producto-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #f5e6cc;
+            margin-bottom: 10px;
+        }
+
+        .producto-info p {
+            color: #c8b89f;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .precio {
+            font-size: 1.5rem;
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #0f0d0c;
+            margin-top: 40px;
+            border-top: 1px solid #3a2e25;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #c8b89f;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .productos-grid { grid-template-columns: 1fr; }
+            .demo-banner { font-size: 0.85rem; padding: 12px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- BANNER DE DEMOSTRACIÓN -->
+    <div class="demo-banner">
+        ⚠️ <strong>EJEMPLO DE DEMOSTRACIÓN</strong> – Los productos son ilustrativos. 
+        Si querés un catálogo similar para tu negocio, 
+        <a href="catalogos.html">contactame desde la página principal</a>.
+    </div>
+
+    <header>
+        <h1>✨ Accesorios Bohemios</h1>
+        <p>Hechos a mano con amor y materiales naturales</p>
+			        <video autoplay muted loop class="video-bg">
+    <source src="img/Accesorios Bohemios.mp4" type="video/mp4">
+			</video>
+    </header>
+
+    <div class="container">
+
+        <!-- CATEGORÍA 1: COLLARES -->
+        <div class="categoria">
+            <h2>📿 Collares</h2>
+            <div class="productos-grid">
+                
+                <div class="producto-card">
+                    <img src="img/collar-piedras.jpg" alt="Collar de Piedras" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Collar de Piedras Naturales</h3>
+                        <p>Amatista, cuarzo rosa y ágata</p>
+                        <div class="precio">$18 USD</div>
+                        <a href="https://wa.me/5493548584454?text=Hola,%20vi%20el%20EJEMPLO%20DE%20CATALOGO%20y%20me%20interesa%20un%20servicio%20similar%20para%20mi%20negocio" class="btn-whatsapp" target="_blank">
+                            📱 Pedir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/collar-concha.jpg" alt="Collar de Conchas" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Collar de Conchas Marinas</h3>
+                        <p>Estilo bohemio playero</p>
+                        <div class="precio">$15 USD</div>
+                        <a href="https://wa.me/5493548584454?text=Hola,%20vi%20el%20EJEMPLO%20DE%20CATALOGO%20y%20me%20interesa%20un%20servicio%20similar%20para%20mi%20negocio" class="btn-whatsapp" target="_blank">
+                            📱 Pedir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/collar-macrame.png" alt="Collar Macramé" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Collar con Macramé</h3>
+                        <p>Hilo encerado con colgante de luna</p>
+                        <div class="precio">$16 USD</div>
+                        <a href="https://wa.me/5493548584454?text=Hola,%20vi%20el%20EJEMPLO%20DE%20CATALOGO%20y%20me%20interesa%20un%20servicio%20similar%20para%20mi%20negocio" class="btn-whatsapp" target="_blank">
+                            📱 Pedir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CATEGORÍA 2: PULSERAS -->
+        <div class="categoria">
+            <h2>📿 Pulseras</h2>
+            <div class="productos-grid">
+                
+                <div class="producto-card">
+                    <img src="img/pulsera-mala.jpg" alt="Pulsera Mala" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Pulsera Mala 108 cuentas</h3>
+                        <p>Madera de sándalo para meditación</p>
+                        <div class="precio">$20 USD</div>
+                        <a href="https://wa.me/5493548584454?text=Hola,%20vi%20el%20EJEMPLO%20DE%20CATALOGO%20y%20me%20interesa%20un%20servicio%20similar%20para%20mi%20negocio" class="btn-whatsapp" target="_blank">
+                            📱 Pedir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/pulsera-cuero.jpg" alt="Pulsera Cuero" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Pulsera de Cuero Trenzado</h3>
+                        <p>Con broche de metal antiguo</p>
+                        <div class="precio">$12 USD</div>
+                        <a href="https://wa.me/5493548584454?text=Hola,%20vi%20el%20EJEMPLO%20DE%20CATALOGO%20y%20me%20interesa%20un%20servicio%20similar%20para%20mi%20negocio" class="btn-whatsapp" target="_blank">
+                            📱 Pedir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/pulsera-semipreciosas.jpg" alt="Pulsera Semipreciosas" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Pulsera Piedras Semipreciosas</h3>
+                        <p>Turquesa, coral y jade</p>
+                        <div class="precio">$22 USD</div>
+                        <a href="https://wa.me/5493548584454?text=Hola,%20vi%20el%20EJEMPLO%20DE%20CATALOGO%20y%20me%20interesa%20un%20servicio%20similar%20para%20mi%20negocio" class="btn-whatsapp" target="_blank">
+                            📱 Pedir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CATEGORÍA 3: ANILLOS -->
+        <div class="categoria">
+            <h2>💍 Anillos</h2>
+            <div class="productos-grid">
+                
+                <div class="producto-card">
+                    <img src="img/anillo-plata.jpg" alt="Anillo de Plata" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Anillo de Plata 925</h3>
+                        <p>Diseño minimalista con piedra natural</p>
+                        <div class="precio">$25 USD</div>
+                        <a href="https://wa.me/5493548584454?text=Hola,%20vi%20el%20EJEMPLO%20DE%20CATALOGO%20y%20me%20interesa%20un%20servicio%20similar%20para%20mi%20negocio" class="btn-whatsapp" target="_blank">
+                            📱 Pedir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/anillo-alambre.jpg" alt="Anillo Alambre" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Anillo de Alambre Enrollado</h3>
+                        <p>Cobre o bronce, talle ajustable</p>
+                        <div class="precio">$10 USD</div>
+                        <a href="https://wa.me/5493548584454?text=Hola,%20vi%20el%20EJEMPLO%20DE%20CATALOGO%20y%20me%20interesa%20un%20servicio%20similar%20para%20mi%20negocio" class="btn-whatsapp" target="_blank">
+                            📱 Pedir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/anillo-madera.jpg" alt="Anillo Madera" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Anillo de Madera Tallada</h3>
+                        <p>Madera noble con acabado natural</p>
+                        <div class="precio">$14 USD</div>
+                        <a href="https://wa.me/5493548584454?text=Hola,%20vi%20el%20EJEMPLO%20DE%20CATALOGO%20y%20me%20interesa%20un%20servicio%20similar%20para%20mi%20negocio" class="btn-whatsapp" target="_blank">
+                            📱 Pedir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Accesorios Bohemios - Ejemplo de Catálogo Intermedio</p>
+        <p><a href="https://wa.me/5493548584454?text=Hola,%20vi%20el%20EJEMPLO%20DE%20CATALOGO%20y%20me%20interesa%20un%20servicio%20similar%20para%20mi%20negocio">Consultas por WhatsApp</a></p>
+        <a href="catalogos.html" class="back-link">← Volver a Catálogos</a>
+    </footer>
+
+</body>
+</html>

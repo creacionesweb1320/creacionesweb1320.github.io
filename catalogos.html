@@ -325,7 +325,25 @@
         .back-home:hover {
             color: var(--gold);
         }
+.btn-br {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
 
+.btn-br:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+}
         /* Responsive */
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
@@ -429,16 +447,18 @@
     <!-- EJEMPLOS -->
     <section class="ejemplos-section">
         <h2 class="section-title">Ejemplos de Trabajo</h2>
-        <p style="color: var(--text-dim); margin-bottom: 20px;">(Próximamente: Demos en vivo de cada nivel)</p>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">(Demos de cada nivel)</p>
         
         <div class="ejemplos-grid">
-            <div class="ejemplo-card">
-                <div class="ejemplo-img">Vista Previa Básico</div>
-                <div class="ejemplo-info">
-                    <h4>Emprendimiento X</h4>
-                    <p>Plan Básico • 10 Productos</p>
-                </div>
-            </div>
+<!-- EJEMPLO 1: CAFÉ ARTESANAL (PLAN BÁSICO) -->
+<div class="ejemplo-card">
+    <img src="img/ejemplo-cafe-basico.png" alt="Ejemplo Café Básico" class="ejemplo-img" style="object-fit: cover;">
+    <div class="ejemplo-info">
+        <h4>☕ Café Artesanal</h4>
+        <p>Plan Básico • 6 Productos • Botones WhatsApp</p>
+        <a href="ejemplo-basico.html" class="btn-br" style="margin-top: 10px; display: inline-block;">🔍 Ver Demo</a>
+    </div>
+</div>
             <div class="ejemplo-card">
                 <div class="ejemplo-img">Vista Previa Intermedio</div>
                 <div class="ejemplo-info">
