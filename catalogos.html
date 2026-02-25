@@ -236,12 +236,32 @@
             margin: 40px auto 0;
         }
 
-        .ejemplo-card {
-            background: var(--card-bg);
-            border: 1px solid var(--gold-border);
-            border-radius: 12px;
-            overflow: hidden;
-        }
+/* FORZAR QUE TODAS LAS IMÁGENES OCUPEN EL 100% */
+.ejemplo-card img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-sizing: border-box !important;
+}
+
+/* ASEGURAR QUE LA TARJETA NO TENGA PADDING EXTRA */
+.ejemplo-card {
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+/* ELIMINAR ESPACIOS EN EL CONTENEDOR DE LA IMAGEN */
+.ejemplo-card > img:first-child {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
 
         .ejemplo-img {
             width: 100%;
@@ -468,13 +488,16 @@
         <a href="ejemplo-intermedio.html" class="btn-br" style="margin-top: 10px; display: inline-block;">🔍 Ver Demo</a>
     </div>
 </div>
-            <div class="ejemplo-card">
-                <div class="ejemplo-img">Vista Previa Premium</div>
-                <div class="ejemplo-info">
-                    <h4>Servicios Z</h4>
-                    <p>Plan Premium • Ilimitado</p>
-                </div>
-            </div>
+<!-- EJEMPLO 3: SPA & BIENESTAR (PLAN PREMIUM) -->
+<!-- DEBERÍA SER ASÍ -->
+<div class="ejemplo-card">
+    <img src="img/ejemplo-spa-premium.png" alt="Spa & Bienestar">
+    <div class="ejemplo-info">
+        <h4>🌿 Spa & Bienestar</h4>
+        <p>Plan Premium • 4 Categorías • 12 Servicios</p>
+        <a href="ejemplo-premium.html" class="btn-br">🔍 Ver Demo</a>
+    </div>
+</div>
         </div>
     </section>
 
