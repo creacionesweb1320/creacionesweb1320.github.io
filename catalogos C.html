@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogos Digitales | Creaciones Web 13:20</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* --- VARIABLES DE TU MARCA (extraídas de tu index.html) --- */
+        :root {
+            --bg-color: #1b1410;
+            --card-bg: rgba(31, 24, 19, 0.88);
+            --text-color: #d4c5a8;
+            --text-light: #f5e6cc;
+            --text-dim: #c8b89f;
+            --gold: #d4af37;
+            --gold-soft: rgba(212, 175, 55, 0.2);
+            --gold-border: #3a2e25;
+            --whatsapp: #25D366;
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- HEADER / HERO SECTION --- */
+        header {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--gold-border);
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            z-index: -1;
+            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%); 
+        }
+
+        header h1 {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            text-shadow: 0 0 8px var(--gold-soft);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: var(--text-dim);
+        }
+
+        /* --- SECCIÓN DE PLANES --- */
+        .planes-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--gold-soft);
+            padding-bottom: 15px;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+
+        .planes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .plan-card {
+            background: var(--card-bg);
+            border: 1px solid var(--gold-border);
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .plan-card.destacado {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+
+        .plan-card.destacado:hover {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+        }
+
+        .plan-name {
+            font-family: var(--font-title);
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .plan-price {
+            font-family: var(--font-title);
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin: 15px 0;
+        }
+        
+        .plan-price span { 
+            font-size: 0.9rem; 
+            color: var(--text-dim); 
+            font-weight: normal;
+            font-family: var(--font-body);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 20px 0 30px;
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        .plan-features li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            background: var(--gold-soft);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .btn-plan {
+            display: inline-block;
+            background: var(--gold-soft);
+            color: var(--gold);
+            padding: 10px 20px;
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            font-weight: 600;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-plan:hover {
+            background: var(--gold);
+            color: #1b1410;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
+
+        .plan-card.destacado .btn-plan {
+            background: var(--whatsapp);
+            color: white;
+            border-color: var(--whatsapp);
+        }
+
+        .plan-card.destacado .btn-plan:hover {
+            background: #128C7E;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+        }
+
+        /* --- SECCIÓN DE EJEMPLOS --- */
+        .ejemplos-section {
+            padding: 80px 20px;
+            background: rgba(23, 17, 13, 0.85);
+            text-align: center;
+            border-top: 1px solid var(--gold-border);
+            border-bottom: 1px solid var(--gold-border);
+        }
+
+        .ejemplos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+/* FORZAR QUE TODAS LAS IMÁGENES OCUPEN EL 100% */
+.ejemplo-card img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-sizing: border-box !important;
+}
+
+/* ASEGURAR QUE LA TARJETA NO TENGA PADDING EXTRA */
+.ejemplo-card {
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+/* ELIMINAR ESPACIOS EN EL CONTENEDOR DE LA IMAGEN */
+.ejemplo-card > img:first-child {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+        .ejemplo-img {
+            width: 100%;
+            height: 180px;
+            background-color: #1f1813;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--gold-border);
+        }
+
+        .ejemplo-info {
+            padding: 20px;
+        }
+
+        .ejemplo-info h4 { 
+            color: var(--text-light); 
+            margin-bottom: 5px; 
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+        }
+        .ejemplo-info p { font-size: 0.9rem; color: var(--text-dim); }
+
+        /* --- FOOTER / CTA --- */
+        .cta-final {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-color) 0%, #14110e 100%);
+        }
+
+        .cta-final h2 {
+            font-family: var(--font-title);
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .cta-final p {
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp);
+            color: white;
+            padding: 15px 50px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            animation: pulsoSuave 4s ease-in-out infinite;
+        }
+
+        @keyframes pulsoSuave {
+            0%, 100% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.25); }
+            50% { box-shadow: 0 0 18px rgba(37, 211, 102, 0.6), 0 0 32px rgba(37, 211, 102, 0.35); }
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+            animation-play-state: paused;
+        }
+
+        .back-home {
+            display: block;
+            margin-top: 40px;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        .back-home:hover {
+            color: var(--gold);
+        }
+.btn-br {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
+
+.btn-br:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+}
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .plan-price { font-size: 2.2rem; }
+            .btn-whatsapp { width: 100%; padding: 15px 20px; }
+        }
+		/* --- VIDEO DE FONDO GENERAL (como en tu index.html) --- */
+.fondo-loop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.fondo-loop video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.4;  /* Ajustá la opacidad del fondo aquí */
+}
+    </style>
+</head>
+<body>
+<!-- VIDEO DE FONDO GENERAL -->
+<div class="fondo-loop">
+    <video autoplay muted loop playsinline>
+        <source src="img/textura.mp4" type="video/mp4">
+    </video>
+</div>
+    <!-- HEADER -->
+    <header>
+        <video autoplay muted loop class="video-bg">
+    <source src="img/Textura 3.mp4" type="video/mp4">
+</video> 
+        <h1>Catálogos Digitales</h1>
+        <p>Tu negocio en el bolsillo de tus clientes.<br>Sin apps, sin complicaciones. Solo vos y WhatsApp.</p>
+    </header>
+
+ <!-- PLANES ACTUALIZADOS (4 OPCIONES) -->
+<section class="planes-section">
+    <h2 class="section-title">Elige tu Nivel</h2>
+    <div class="planes-container">
+        
+        <!-- PLAN BÁSICO -->
+        <div class="plan-card">
+            <h3 class="plan-name">Básico</h3>
+            <div class="plan-price">$40 <span>USD</span></div>
+            <ul class="plan-features">
+                <li>Hasta 10 Productos</li>
+                <li>1 Categoría principal</li>
+                <li>Botón WhatsApp por producto</li>
+                <li>Diseño Responsive (Celular/PC)</li>
+                <li>Entrega en 48 hs</li>
+                <li>Sin costo de mantenimiento</li>
+            </ul>
+            <a href="https://wa.me/5493548584454?text=Hola,%20me%20interesa%20el%20Plan%20Basico%20de%20Catalogos" class="btn-plan">Elegir Básico</a>
+        </div>
+
+        <!-- PLAN INTERMEDIO (DESTACADO) -->
+        <div class="plan-card destacado">
+            <h3 class="plan-name">Intermedio</h3>
+            <div class="plan-price">$65 <span>USD</span></div>
+            <ul class="plan-features">
+                <li>Hasta 30 Productos</li>
+                <li>3 Categorías organizadas</li>
+                <li>Lista de pedidos (carrito simple)</li>
+                <li>Logo y Colores de tu marca</li>
+                <li>Entrega en 72 hs</li>
+                <li>1 Mes de soporte incluido</li>
+            </ul>
+            <a href="https://wa.me/5493548584454?text=Hola,%20me%20interesa%20el%20Plan%20Intermedio%20de%20Catalogos" class="btn-plan">Elegir Intermedio</a>
+        </div>
+
+        <!-- PLAN PREMIUM VISUAL -->
+        <div class="plan-card">
+            <h3 class="plan-name">Premium</h3>
+            <div class="plan-price">$95 <span>USD</span></div>
+            <ul class="plan-features">
+                <li>Productos Ilimitados</li>
+                <li>Categorías Ilimitadas</li>
+                <li>Video/Imagen de cabecera</li>
+                <li>Botones WhatsApp personalizados</li>
+                <li>SEO básico + carga optimizada</li>
+                <li>Entrega prioritaria (5-7 días)</li>
+            </ul>
+            <a href="https://wa.me/5493548584454?text=Hola,%20me%20interesa%20el%20Plan%20Premium%20de%20Catalogos" class="btn-plan">Elegir Premium</a>
+        </div>
+
+        <!-- PLAN PREMIUM + CARRITO -->
+        <div class="plan-card destacado" style="border-color: #9b59b6;">
+            <h3 class="plan-name" style="color: #9b59b6;">Premium + Carrito</h3>
+            <div class="plan-price" style="color: #9b59b6;">$130 <span>USD</span></div>
+            <ul class="plan-features">
+                <li>Todo lo del plan Premium</li>
+                <li>🛒 Carrito funcional (suma/resta)</li>
+                <li>Eliminar productos del carrito</li>
+                <li>Mensaje consolidado a WhatsApp</li>
+                <li>Total calculado automáticamente</li>
+                <li>Notificaciones visuales</li>
+            </ul>
+            <a href="https://wa.me/5493548584454?text=Hola,%20me%20interesa%20el%20Plan%20Premium%20con%20Carrito" class="btn-plan" style="background: #9b59b6; border-color: #9b59b6; color: white;">Elegir Premium + Carrito</a>
+        </div>
+
+    </div>
+</section>
+
+    <!-- EJEMPLOS -->
+    <section class="ejemplos-section">
+        <h2 class="section-title">Ejemplos de Trabajo</h2>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">(Demos de cada nivel)</p>
+        
+        <div class="ejemplos-grid">
+<!-- EJEMPLO 1: CAFÉ ARTESANAL (PLAN BÁSICO) -->
+<div class="ejemplo-card">
+    <img src="img/ejemplo-cafe-basico.png" alt="Ejemplo Café Básico" class="ejemplo-img" style="object-fit: cover;">
+    <div class="ejemplo-info">
+        <h4>☕ Café Artesanal</h4>
+        <p>Plan Básico • 6 Productos • Botones WhatsApp</p>
+        <a href="ejemplo-basico.html" class="btn-br" style="margin-top: 10px; display: inline-block;">🔍 Ver Demo</a>
+    </div>
+</div>
+<!-- EJEMPLO 2: ACCESORIOS BOHEMIOS (PLAN INTERMEDIO) -->
+<div class="ejemplo-card">
+    <img src="img/ejemplo-accesorios-intermedio.png" alt="Ejemplo Accesorios Intermedio" class="ejemplo-img" style="object-fit: cover;">
+    <div class="ejemplo-info">
+        <h4>✨ Accesorios Bohemios</h4>
+        <p>Plan Intermedio • 3 Categorías • 9 Productos</p>
+        <a href="ejemplo-intermedio.html" class="btn-br" style="margin-top: 10px; display: inline-block;">🔍 Ver Demo</a>
+    </div>
+</div>
+<!-- EJEMPLO 3: SPA & BIENESTAR (PLAN PREMIUM) -->
+<!-- DEBERÍA SER ASÍ -->
+<div class="ejemplo-card">
+    <img src="img/ejemplo-spa-premium.png" alt="Spa & Bienestar">
+    <div class="ejemplo-info">
+        <h4>🌿 Spa & Bienestar</h4>
+        <p>Plan Premium • 4 Categorías • 12 Servicios</p>
+        <a href="ejemplo-premium.html" class="btn-br">🔍 Ver Demo</a>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+        <h2>¿Listo para empezar?</h2>
+        <p>Hablemos sin compromiso y veamos cuál es el mejor plan para vos.</p>
+        <a href="https://wa.me/5493548584454?text=Hola,%20vi%20Creaciones%20Web%2013:20%20y%20quiero%20consultar%20sobre%20Catalogos%20Digitales" class="btn-whatsapp" target="_blank">
+            📱 WhatsApp
+        </a>
+        <a href="index.html" class="back-home">← Volver al Inicio</a>
+    </section>
+
+</body>
+</html>

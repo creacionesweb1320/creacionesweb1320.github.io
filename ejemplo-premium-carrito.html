@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanHome - Ejemplo Premium con Carrito | Creaciones Web 13:20</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #1b1410;
+            color: #d4c5a8;
+            line-height: 1.6;
+        }
+
+        .demo-banner {
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
+            color: #f5e6cc;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .demo-banner a {
+            color: #d4af37;
+            text-decoration: underline;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2d1f1a 0%, #1b1410 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #f5e6cc;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #c8b89f;
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .categoria {
+            margin-bottom: 60px;
+            padding: 30px;
+            background: rgba(31, 24, 19, 0.88);
+            border: 1px solid #3a2e25;
+            border-radius: 12px;
+        }
+
+        .categoria h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .producto-card {
+            background: rgba(20, 15, 12, 0.7);
+            border: 1px solid #3a2e25;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+
+        .producto-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #2d1f1a;
+        }
+
+        .producto-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .producto-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: #f5e6cc;
+            margin-bottom: 10px;
+        }
+
+        .producto-info p {
+            color: #c8b89f;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .precio {
+            font-size: 1.6rem;
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .btn-agregar {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            padding: 10px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: 1px solid #d4af37;
+            cursor: pointer;
+        }
+
+        .btn-agregar:hover {
+            background: #d4af37;
+            color: #1b1410;
+        }
+
+        /* CARRITO FLOTANTE */
+        .cart-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .cart-float:hover {
+            transform: scale(1.05);
+            background: #128C7E;
+        }
+
+        .cart-count {
+            background: white;
+            color: #25D366;
+            padding: 2px 8px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+        }
+/* BOTONES DENTRO DEL CARRITO */
+.cart-item button {
+    transition: all 0.2s;
+}
+
+.cart-item button:hover {
+    transform: scale(1.1);
+}
+
+.cart-item button:active {
+    transform: scale(0.95);
+}
+
+#cart-acciones {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#cart-acciones .btn-cerrar:first-child {
+    background: rgba(220, 53, 69, 0.2);
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+#cart-acciones .btn-cerrar:first-child:hover {
+    background: rgba(220, 53, 69, 0.4);
+}
+        /* MODAL DEL CARRITO */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-content {
+            background: #1b1410;
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .cart-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #d4af37;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            color: #c8b89f;
+        }
+
+        .cart-total {
+            font-size: 1.5rem;
+            color: #d4af37;
+            font-weight: bold;
+            text-align: right;
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .cart-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        .btn-cerrar {
+            background: transparent;
+            color: #c8b89f;
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: 1px solid #c8b89f;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-cerrar:hover {
+            background: rgba(200, 184, 159, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #0f0d0c;
+            margin-top: 60px;
+            border-top: 1px solid #3a2e25;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #c8b89f;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .productos-grid { grid-template-columns: 1fr; }
+            .cart-float { bottom: 20px; right: 20px; }
+        }
+		</style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- BANNER DE DEMOSTRACIÓN -->
+    <div class="demo-banner">
+        ⚠️ <strong>EJEMPLO DE DEMOSTRACIÓN</strong> – Productos ilustrativos. 
+        <a href="catalogos.html">Contactame para un catálogo similar</a>.
+    </div>
+
+    <header>
+        <h1>🧹 CleanHome</h1>
+        <p>Artículos de limpieza para tu hogar</p>
+					        <video autoplay muted loop class="video-bg">
+    <source src="img/CLEANHOME productos de limpieza.mp4" type="video/mp4">
+			</video>
+    </header>
+
+    <div class="container">
+
+        <!-- CATEGORÍA 1: LIMPIEZA DE ROPA -->
+        <div class="categoria">
+            <h2>👕 Limpieza de Ropa</h2>
+            <div class="productos-grid">
+                
+                <div class="producto-card">
+                    <img src="img/limpieza-lavandina.png" alt="Lavandina" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Lavandina Concentrada 1L</h3>
+                        <p>Fórmula concentrada, máxima desinfección</p>
+                        <div class="precio">$3 USD</div>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Lavandina Concentrada 1L', 3)">➕ Agregar</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/limpieza-suavizante.png" alt="Suavizante" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Suavizante Lavanda 1L</h3>
+                        <p>Fragancia duradera, suavidad extra</p>
+                        <div class="precio">$4 USD</div>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Suavizante Lavanda 1L', 4)">➕ Agregar</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/limpieza-detergente.png" alt="Detergente" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Detergente Líquido 500ml</h3>
+                        <p>Remueve grasa, cuida tus manos</p>
+                        <div class="precio">$2 USD</div>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Detergente Líquido 500ml', 2)">➕ Agregar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CATEGORÍA 2: LIMPIEZA DE HOGAR -->
+        <div class="categoria">
+            <h2>🏠 Limpieza de Hogar</h2>
+            <div class="productos-grid">
+                
+                <div class="producto-card">
+                    <img src="img/limpieza-desengrasante.png" alt="Desengrasante" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Desengrasante Multiuso 500ml</h3>
+                        <p>Para cocina y baños, acción rápida</p>
+                        <div class="precio">$3.50 USD</div>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Desengrasante Multiuso 500ml', 3.5)">➕ Agregar</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/limpieza-vidrios.png" alt="Limpiavidrios" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Limpiavidrios 500ml</h3>
+                        <p>Sin marcas, brillo duradero</p>
+                        <div class="precio">$2.50 USD</div>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Limpiavidrios 500ml', 2.5)">➕ Agregar</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/limpieza-pisofloor.png" alt="Limpiapisos" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Limpiapisos Pino 1L</h3>
+                        <p>Desinfecta y perfuma tu hogar</p>
+                        <div class="precio">$3 USD</div>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Limpiapisos Pino 1L', 3)">➕ Agregar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CATEGORÍA 3: ACCESORIOS -->
+        <div class="categoria">
+            <h2>🧽 Accesorios de Limpieza</h2>
+            <div class="productos-grid">
+                
+                <div class="producto-card">
+                    <img src="img/limpieza-esponjas.png" alt="Esponjas" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Esponjas Multiuso (x5)</h3>
+                        <p>Doble cara, larga duración</p>
+                        <div class="precio">$1.50 USD</div>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Esponjas Multiuso x5', 1.5)">➕ Agregar</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/limpieza-trapo.png" alt="Trapo de piso" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Trapo de Microfibra</h3>
+                        <p>Reutilizable, absorbe hasta 8x su peso</p>
+                        <div class="precio">$2 USD</div>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Trapo de Microfibra', 2)">➕ Agregar</button>
+                    </div>
+                </div>
+
+                <div class="producto-card">
+                    <img src="img/limpieza-guantes.png" alt="Guantes" class="producto-img">
+                    <div class="producto-info">
+                        <h3>Guantes de Látex (par)</h3>
+                        <p>Protección para tus manos</p>
+                        <div class="precio">$1 USD</div>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Guantes de Látex par', 1)">➕ Agregar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CARRITO FLOTANTE -->
+    <div class="cart-float" onclick="abrirCarrito()">
+        🛒 Carrito <span class="cart-count" id="cart-count">0</span>
+    </div>
+
+    <!-- MODAL DEL CARRITO -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <h3>🛒 Tu Pedido</h3>
+            <div class="cart-items" id="cart-items">
+                <p style="text-align: center; color: #c8b89f;">El carrito está vacío</p>
+            </div>
+            <div class="cart-total" id="cart-total">Total: $0 USD</div>
+            <div class="cart-buttons" id="cart-acciones">
+                <button class="btn-cerrar" onclick="cerrarCarrito()">Seguir comprando</button>
+                <button class="btn-whatsapp" onclick="enviarPedido()">📱 Enviar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 CleanHome - Ejemplo de Catálogo Premium con Carrito</p>
+        <p><a href="https://wa.me/5493548584454">Consultas por WhatsApp</a></p>
+        <a href="catalogos.html" class="back-link">← Volver a Catálogos</a>
+    </footer>
+
+    <!-- JAVASCRIPT DEL CARRITO -->
+    <script>
+        let carrito = [];
+
+        function agregarAlCarrito(nombre, precio) {
+            const existente = carrito.find(item => item.nombre === nombre);
+            if (existente) {
+                existente.cantidad++;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
+            actualizarContador();
+            mostrarNotificacion(`✅ ${nombre} agregado al carrito`);
+        }
+
+        function actualizarContador() {
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+            
+            // Ocultar/mostrar carrito flotante según haya items
+            const cartFloat = document.querySelector('.cart-float');
+            if (totalItems === 0) {
+                cartFloat.style.opacity = '0.7';
+            } else {
+                cartFloat.style.opacity = '1';
+            }
+        }
+
+        function abrirCarrito() {
+            const modal = document.getElementById('cart-modal');
+            const itemsContainer = document.getElementById('cart-items');
+            const totalElement = document.getElementById('cart-total');
+            const accionesElement = document.getElementById('cart-acciones');
+
+            if (carrito.length === 0) {
+                itemsContainer.innerHTML = '<p style="text-align: center; color: #c8b89f; padding: 20px;">🛒 El carrito está vacío</p>';
+                totalElement.textContent = 'Total: $0 USD';
+                accionesElement.innerHTML = '<button class="btn-cerrar" onclick="cerrarCarrito()">Seguir comprando</button>';
+            } else {
+                let html = '';
+                let total = 0;
+                
+                carrito.forEach((item, index) => {
+                    const subtotal = item.precio * item.cantidad;
+                    total += subtotal;
+                    html += `
+                        <div class="cart-item">
+                            <div style="flex: 1;">
+                                <div style="color: #f5e6cc; font-weight: 600;">${item.nombre}</div>
+                                <div style="font-size: 0.85rem; color: #c8b89f;">$${item.precio.toFixed(2)} x ${item.cantidad}</div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <button onclick="cambiarCantidad(${index}, -1)" style="background: rgba(212, 175, 55, 0.2); border: 1px solid #d4af37; color: #d4af37; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-weight: bold;">-</button>
+                                <span style="color: #f5e6cc; min-width: 20px; text-align: center;">${item.cantidad}</span>
+                                <button onclick="cambiarCantidad(${index}, 1)" style="background: rgba(212, 175, 55, 0.2); border: 1px solid #d4af37; color: #d4af37; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-weight: bold;">+</button>
+                                <button onclick="eliminarProducto(${index})" style="background: rgba(220, 53, 69, 0.2); border: 1px solid #dc3545; color: #dc3545; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-weight: bold; margin-left: 5px;">×</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                itemsContainer.innerHTML = html;
+                totalElement.textContent = `Total: $${total.toFixed(2)} USD`;
+                accionesElement.innerHTML = `
+                    <button class="btn-cerrar" onclick="vaciarCarrito()">🗑️ Vaciar todo</button>
+                    <button class="btn-cerrar" onclick="cerrarCarrito()">Seguir comprando</button>
+                    <button class="btn-whatsapp" onclick="enviarPedido()">📱 Enviar Pedido</button>
+                `;
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function cambiarCantidad(index, cambio) {
+            carrito[index].cantidad += cambio;
+            if (carrito[index].cantidad <= 0) {
+                carrito.splice(index, 1);
+            }
+            actualizarContador();
+            abrirCarrito(); // Recargar vista del carrito
+        }
+
+        function eliminarProducto(index) {
+            const nombre = carrito[index].nombre;
+            carrito.splice(index, 1);
+            actualizarContador();
+            abrirCarrito(); // Recargar vista del carrito
+            mostrarNotificacion(`❌ ${nombre} eliminado`);
+        }
+
+        function vaciarCarrito() {
+            if (confirm('¿Estás seguro de que querés vaciar todo el carrito?')) {
+                carrito = [];
+                actualizarContador();
+                abrirCarrito();
+                mostrarNotificacion('🗑️ Carrito vaciado');
+            }
+        }
+
+        function cerrarCarrito() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        function enviarPedido() {
+            if (carrito.length === 0) {
+                alert('El carrito está vacío. Agregá productos primero.');
+                return;
+            }
+
+            let mensaje = 'Hola, quiero hacer el siguiente pedido:%0A%0A';
+            let total = 0;
+
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                total += subtotal;
+                mensaje += `🧴 ${item.nombre} (x${item.cantidad}) - $${subtotal.toFixed(2)} USD%0A`;
+            });
+
+            mensaje += `%0A*Total: $${total.toFixed(2)} USD*%0A%0AVisto en: Ejemplo Catálogo Premium con Carrito`;
+
+            window.open(`https://wa.me/5493548584454?text=${mensaje}`, '_blank');
+        }
+
+        function mostrarNotificacion(mensaje) {
+            // Crear notificación flotante
+            const notif = document.createElement('div');
+            notif.textContent = mensaje;
+            notif.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: rgba(212, 175, 55, 0.9);
+                color: #1b1410;
+                padding: 12px 25px;
+                border-radius: 8px;
+                font-weight: 600;
+                z-index: 3000;
+                animation: slideIn 0.3s ease;
+            `;
+            document.body.appendChild(notif);
+            
+            setTimeout(() => {
+                notif.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notif.remove(), 300);
+            }, 2000);
+        }
+
+        // Agregar animaciones CSS para notificaciones
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('cart-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                cerrarCarrito();
+            }
+        });
+    </script>
+
+</body>
+</html>
