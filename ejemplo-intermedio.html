@@ -207,15 +207,14 @@
             }
         }
 
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
-            
-            header .video-cabecera {
-                max-height: 180px;
-            }
-        }
+        @media (max-width: 768px) 
+		/* VIDEO EN CELULAR */
+header .video-cabecera {
+    max-height: 300px;
+}{
+            header h1 { font-size: 2rem; }
+            .productos-grid { grid-template-columns: 1fr; }
+            .demo-banner { font-size: 0.85rem; padding: 12px; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 </head>
@@ -380,4 +379,5 @@
     </footer>
 
 </body>
+
 </html>
