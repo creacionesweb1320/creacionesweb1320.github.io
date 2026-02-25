@@ -6,6 +6,10 @@
     <title>Café Artesanal - Ejemplo Básico | Creaciones Web 13:20</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+		html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
         
         body {
             font-family: 'Montserrat', sans-serif;
@@ -47,7 +51,18 @@
             color: #c8b89f;
             font-size: 1.1rem;
         }
-
+/* VIDEO EN CABECERA - QUE NO SE SALGA */
+header .video-cabecera {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    display: block;
+    margin: 0 auto;
+}
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -144,7 +159,11 @@
             font-size: 0.9rem;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 768px) 
+		/* VIDEO EN CELULAR */
+header .video-cabecera {
+    max-height: 300px;
+}{
             header h1 { font-size: 2rem; }
             .productos-grid { grid-template-columns: 1fr; }
             .demo-banner { font-size: 0.85rem; padding: 12px; }
@@ -164,7 +183,7 @@
     <header>
 	        <h1>☕ Café Artesanal</h1>
         <p>Granos seleccionados de las mejores fincas</p>
-	        <video autoplay muted loop class="video-bg">
+	       <video autoplay muted loop class="video-cabecera">
     <source src="img/moliendo cafe.mp4" type="video/mp4">
 			</video> 
     </header>
