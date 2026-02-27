@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creaciones Web 13:20 - Enlaces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1b1410 0%, #2d1f1a 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #d4c5a8;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .container {
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* PERFIL */
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 3px solid #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            background: #2d1f1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #f5e6cc;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .bio {
+            color: #c8b89f;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        /* BOTONES DE ENLACE - EFECTO NEON */
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(31, 24, 19, 0.88);
+            color: #f5e6cc;
+            padding: 16px 24px;
+            margin-bottom: 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid #3a2e25;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .link-btn:hover {
+            transform: translateY(-3px);
+            border-color: #d4af37;
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(212, 175, 55, 0.2);
+        }
+        
+        .link-btn .icon {
+            font-size: 1.3rem;
+        }
+        
+        /* BOTÓN DESTACADO (ej: WhatsApp) */
+        .link-btn.destacado {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            animation: pulsoSuave 3s ease-in-out infinite;
+        }
+        
+        .link-btn.destacado:hover {
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+        
+        @keyframes pulsoSuave {
+            0%, 100% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.25); }
+            50% { box-shadow: 0 0 18px rgba(37, 211, 102, 0.6), 0 0 32px rgba(37, 211, 102, 0.35); }
+        }
+        
+        /* FOOTER */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 0.8rem;
+            color: #8b7355;
+        }
+        
+        .footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            body { padding: 30px 15px; }
+            h1 { font-size: 1.5rem; }
+            .link-btn { padding: 14px 20px; font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- PERFIL -->
+             <img src="img/Mi foto8.jpg" alt="Raúl" class="profile-img">
+        <h1>Raúl - Creaciones Web 13:20</h1>
+        <p class="bio">Diseño web artesanal para emprendedores. Sitios elegantes, funcionales y con identidad propia. ✨</p>
+        
+        <!-- ENLACES -->
+        <a href="https://wa.me/5493548584454" class="link-btn destacado" target="_blank">
+            <span class="icon">📱</span> WhatsApp
+        </a>
+        
+        <a href="https://creacionesweb1320.github.io/" class="link-btn" target="_blank">
+            <span class="icon">🌐</span> Mi Sitio Web
+        </a>
+        
+        <a href="catalogos.html" class="link-btn" target="_blank">
+            <span class="icon">🛒</span> Catálogos Digitales
+        </a>
+        
+        <a href="https://instagram.com/" class="link-btn" target="_blank">
+            <span class="icon">📸</span> Instagram
+        </a>
+        
+        <a href="mailto:creacionesweb1320@gmail.com" class="link-btn" target="_blank">
+            <span class="icon">📧</span> Email
+        </a>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>Hecho con ❤️ por <a href="https://creacionesweb1320.github.io/">Creaciones Web 13:20</a></p>
+        </div>
+        
+    </div>
+</body>
+</html>
