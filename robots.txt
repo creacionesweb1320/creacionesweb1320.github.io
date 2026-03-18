@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://creacionesweb1320.github.io/sitemap.xml
