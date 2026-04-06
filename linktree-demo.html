@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creaciones Web 13:20 - Enlaces</title>
+    <title>Bety & Raul – Emprendimientos Familiares</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,7 +26,6 @@
             text-align: center;
         }
         
-        /* PERFIL */
         .profile-img {
             width: 120px;
             height: 120px;
@@ -35,10 +35,6 @@
             border: 3px solid #d4af37;
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
             background: #2d1f1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
         }
         
         h1 {
@@ -55,7 +51,6 @@
             line-height: 1.5;
         }
         
-        /* BOTONES DE ENLACE - EFECTO NEON */
         .link-btn {
             display: flex;
             align-items: center;
@@ -71,24 +66,14 @@
             font-size: 1rem;
             border: 1px solid #3a2e25;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
         
         .link-btn:hover {
             transform: translateY(-3px);
             border-color: #d4af37;
-            box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.4),
-                0 0 15px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 175, 55, 0.2);
         }
         
-        .link-btn .icon {
-            font-size: 1.3rem;
-        }
-        
-        /* BOTÓN DESTACADO (ej: WhatsApp) */
         .link-btn.destacado {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
@@ -96,16 +81,20 @@
             animation: pulsoSuave 3s ease-in-out infinite;
         }
         
-        .link-btn.destacado:hover {
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-        }
-        
         @keyframes pulsoSuave {
-            0%, 100% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.4), 0 0 24px rgba(37, 211, 102, 0.25); }
-            50% { box-shadow: 0 0 18px rgba(37, 211, 102, 0.6), 0 0 32px rgba(37, 211, 102, 0.35); }
+            0%, 100% { box-shadow: 0 0 12px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(37, 211, 102, 0.6); }
+        }
+
+        .back-home {
+            display: inline-block;
+            margin-top: 20px;
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
         
-        /* FOOTER */
         .footer {
             margin-top: 40px;
             padding-top: 20px;
@@ -113,63 +102,49 @@
             font-size: 0.8rem;
             color: #8b7355;
         }
-        
-        .footer a {
-            color: #d4af37;
-            text-decoration: none;
-        }
-        
-        /* RESPONSIVE */
-        @media (max-width: 480px) {
-            body { padding: 30px 15px; }
-            h1 { font-size: 1.5rem; }
-            .link-btn { padding: 14px 20px; font-size: 0.95rem; }
-        }
     </style>
 </head>
 <body>
     <div class="container">
         
-        <!-- PERFIL -->
-             <img src="img/Mi foto8.jpg" alt="Raúl" class="profile-img">
-        <h1>Raúl - Creaciones Web 13:20</h1>
-        <p class="bio">Diseño web artesanal para emprendedores. Sitios elegantes, funcionales y con identidad propia. ✨</p>
+        <img src="img/Mi foto8.jpg" alt="Raúl" class="profile-img">
+        <h1>Bety & Raul – Emprendimientos Familiares</h1>
+        <p class="bio">Desde Capilla del Monte, creando con las manos y la tecnología.<br> Confección artesanal, Diseño Web y Producción de Audio.✨</p>
         
-        <!-- ENLACES -->
-        <a href="https://wa.me/5493548584454?text=Hola%2C%20vi%20el%20ejemplo%20de%20Linktree%20Demo%20y%20me%20interesa%20una%20web%20similar." class="link-btn destacado" target="_blank">
-            <span class="icon">📱</span> Deseas una igual? Enviame un WhatsApp
+        <a href="https://wa.me/5493548584454?text=Hola%20Raul!%20Vi%20tus%20proyectos%20y%20me%20interesa%20consultarte." class="link-btn destacado" target="_blank">
+            <span class="icon">📱</span> Hablemos por WhatsApp
         </a>
         
         <a href="https://creacionesweb1320.github.io/" class="link-btn" target="_blank">
-            <span class="icon">🌐</span> Mi Sitio Web ¨Creaciones Web 13:20¨
+            <span class="icon">💻</span> Creaciones Web 13:20
         </a>
 		
-		<a href="https://flashbackradio2025.github.io/" class="link-btn" target="_blank">
-            <span class="icon">🌐</span> Mi Sitio Web ¨FlashBack Radio - El Eco del Tiempo¨
+        <a href="https://flashbackradio2025.github.io/" class="link-btn" target="_blank">
+            <span class="icon">📻</span> FlashBack Radio - Eco del Tiempo
         </a>
 		
-		<a href="https://brconfecciones.github.io/" class="link-btn" target="_blank">
-            <span class="icon">🌐</span> Mi Sitio Web ¨BR Confecciones¨
+        <a href="https://brconfecciones.github.io/" class="link-btn" target="_blank">
+            <span class="icon">🧵</span> BR Confecciones (Bety y Raul)
         </a>
         
         <a href="https://creacionesweb1320.github.io/catalogos.html" class="link-btn" target="_blank">
-            <span class="icon">🛒</span> Catálogos Digitales
+            <span class="icon">🛒</span> Ver Catálogos Digitales
         </a>
         
-        <a href="https://instagram.com/" class="link-btn" target="_blank">
-            <span class="icon">📸</span> Instagram
-        </a>
-        
-        <a href="mailto:creacionesweb1320@gmail.com" class="link-btn" target="_blank">
-            <span class="icon">📧</span> Email
-        </a>
-        
-        <!-- FOOTER -->
-        <div class="footer">
-            <p>Hecho con ❤️ por <a href="https://creacionesweb1320.github.io/">Creaciones Web 13:20</a></p>
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <a href="https://instagram.com/" class="link-btn" style="flex: 1; padding: 12px;" target="_blank">
+                <span class="icon">📸</span> Instagram
+            </a>
+            <a href="mailto:creacionesweb1320@gmail.com" class="link-btn" style="flex: 1; padding: 12px;" target="_blank">
+                <span class="icon">📧</span> Email
+            </a>
         </div>
-                </a>
+
         <a href="index.html" class="back-home">← Volver al Inicio</a>
+
+        <div class="footer">
+            <p>Hecho con ❤️ por Creaciones Web 13:20</p>
+        </div>
     </div>
 </body>
 </html>
